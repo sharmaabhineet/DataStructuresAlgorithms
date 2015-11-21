@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="org/leIngeneursInc/dataStructures/Algorithms/lists/test/|org/leIngeneursInc/dataStructures/Algorithms/lists/test/" kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/jaxen-core.jar"/>
+	<classpathentry kind="lib" path="lib/jaxen-jdom.jar"/>
+	<classpathentry kind="lib" path="lib/jdom-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jtestcase_4.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/junit-3.8.1.jar"/>
+	<classpathentry kind="lib" path="lib/org.jicengine-2.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/saxpath.jar"/>
+	<classpathentry kind="lib" path="/DataStructuresAlgorithms/dist/DataStructuresAlgorithms.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

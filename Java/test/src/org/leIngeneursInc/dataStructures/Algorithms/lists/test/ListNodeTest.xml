@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://jtestcase.sourceforge.net/dtd/jtestcase2.xsd">
+	<class name="org.leIngeneursInc.dataStructuresAlgorithms.lists.ListNode">
+		<method name="getVal">
+			<test-case name="Valid Val">
+				<params>
+					<param name="var1" type="int">1</param>
+				</params>
+			</test-case>
+		</method>
+	</class>
+</tests>

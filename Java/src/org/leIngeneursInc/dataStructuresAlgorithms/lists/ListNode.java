@@ -56,6 +56,7 @@ public class ListNode<T> {
 		} else {
 			//do nothing here. go ahead
 		}
+		this.val = val;
 		this.next = null;
 	}
 	

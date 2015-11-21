@@ -4,13 +4,10 @@
 package org.leIngeneursInc.dataStructuresAlgorithms.lists;
 
 /**
- * @author Abhineet
+ * Generic Class for LinkedList
+ * @author Abhineet (sharma.abhineet31@gmail.com)
  *
- */
-/**
- * @author Abhineet
- *
- * @param <T>
+ * @param <T> Generic representing the value type for the list
  */
 public class LinkedList<T> {
 	/**
@@ -195,6 +192,8 @@ public class LinkedList<T> {
 	
 	/**
 	 * Returns the reference to the nth node from end if it exists. Null otherwise
+	 * Time Complexity : O(n)
+	 * Space Complexity : O(1)
 	 * @param n the index representing the nth node from the end of the list. Throws IllegalArgumentException if n < 0.
 	 * @return the reference to the nth node from the end of the list. Null otherwise 
 	 */
