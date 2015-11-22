@@ -49,6 +49,10 @@ public class LinkedList<T> {
 		this.end = this.getLastNode();
 	}
 	
+	public ListNode<T> getHead(){
+		return head;
+	}
+	
 	/**
 	 * Returns boolean value indicating whether or not the list is empty
 	 * @return boolean value indicating whether or not the list is empty.
@@ -219,5 +223,19 @@ public class LinkedList<T> {
 			slowPtr = slowPtr.getNext();
 		}
 		return slowPtr;
+	}
+	
+	@Override
+	public String toString(){
+		ListNode<T> trav = head;
+		StringBuffer strBuf = new StringBuffer();
+		while(trav != null){
+			strBuf.append(trav.getVal().toString());
+			trav = trav.getNext();
+			if(trav != null){
+				strBuf.append(" --> ");
+			}
+		}
+		return strBuf.toString();
 	}
 }
