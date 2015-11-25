@@ -1,4 +1,3 @@
-# ####### DataStructuresAndAlgorithms #######
 Data Structures & Algorithms
 ==============
 A library containing implementation of well known data structures and various other algorithms pertaining to them.
