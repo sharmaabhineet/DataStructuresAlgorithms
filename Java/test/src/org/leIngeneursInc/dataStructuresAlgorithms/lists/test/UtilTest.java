@@ -3,7 +3,13 @@
  */
 package org.leIngeneursInc.dataStructuresAlgorithms.lists.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Comparator;
 
 import org.junit.Test;
 import org.leIngeneursInc.dataStructuresAlgorithms.lists.LinkedList;
@@ -174,5 +180,152 @@ public class UtilTest {
 		}
 		assertNull(head);
 	}
+	
+	private static final Comparator<Integer> getIntegerComparator(){
+		return new Comparator<Integer>() {
 
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				if(o1.intValue() > o2.intValue()){
+					return 1;
+				} else if ( o1.intValue() == o2.intValue()){
+					return 0;
+				} else{
+					return -1;
+				}
+			}
+		};
+	}
+	
+	@Test
+	public void test_partition_EmptyList(){
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list = Util.partition(list, 0, getIntegerComparator());
+		assertNotNull(list);
+		//Expecting the head to be null
+		assertNull(list.getHead());
+		assertTrue(list.isEmpty());
+	}
+
+	@Test
+	public void test_partition_SingleNode(){
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.insert(new ListNode<Integer>(1));
+		list = Util.partition(list, 0, getIntegerComparator());
+		assertNotNull(list);
+		//Expecting the head to be null
+		assertNotNull(list.getHead());
+		assertNull(list.getHead().getNext());
+		assertEquals(1, list.getHead().getVal().intValue());
+	}
+	
+	@Test
+	public void test_partition_CornerCase1(){
+		String assertFailTestMsg = "Fails for Input : list = [1,1] ; val = 0";
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.insert(new ListNode<Integer>(1));
+		list.insert(new ListNode<Integer>(1));
+		list = Util.partition(list, 0, getIntegerComparator());
+		assertNotNull(list);
+		//Expecting the head to be null
+		assertNotNull(assertFailTestMsg, list.getHead());
+		int[] arr = new int[]{1,1};
+		ListNode<Integer> trav = list.getHead();
+		for(int i : arr){
+			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
+			trav = trav.getNext();
+		}
+		assertNull(assertFailTestMsg, trav);
+	}
+	
+	@Test
+	public void test_partition_CornerCase2(){
+		String assertFailTestMsg = "Fails for Input : list = [1,1] ; val = 2";
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.insert(new ListNode<Integer>(1));
+		list.insert(new ListNode<Integer>(1));
+		list = Util.partition(list, 0, getIntegerComparator());
+		assertNotNull(list);
+		//Expecting the head to be null
+		assertNotNull(assertFailTestMsg, list.getHead());
+		int[] arr = new int[]{1,1};
+		ListNode<Integer> trav = list.getHead();
+		for(int i : arr){
+			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
+			trav = trav.getNext();
+		}
+		assertNull(assertFailTestMsg, trav);
+	}
+	
+	@Test
+	public void test_partition_Case1(){
+		String assertFailTestMsg = "Fails for Input : list = [1,4,3,2,5,2] ; val = 3";
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.insert(new ListNode<Integer>(1));
+		list.insert(new ListNode<Integer>(4));
+		list.insert(new ListNode<Integer>(3));
+		list.insert(new ListNode<Integer>(2));
+		list.insert(new ListNode<Integer>(5));
+		list.insert(new ListNode<Integer>(2));
+		list = Util.partition(list, 3, getIntegerComparator());
+		assertNotNull(list);
+		//Expecting the head to be null
+		assertNotNull(assertFailTestMsg, list.getHead());
+		int[] arr = new int[]{1,2,2,4,3,5};
+		ListNode<Integer> trav = list.getHead();
+		for(int i : arr){
+			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
+			trav = trav.getNext();
+		}
+		assertNull(assertFailTestMsg, trav);
+	}
+	
+	@Test
+	public void test_partition_Case2(){
+		String assertFailTestMsg = "Fails for Input : list = [4,1,4,3,2,5,2] ; val = 3";
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.insert(new ListNode<Integer>(4));
+		list.insert(new ListNode<Integer>(1));
+		list.insert(new ListNode<Integer>(4));
+		list.insert(new ListNode<Integer>(3));
+		list.insert(new ListNode<Integer>(2));
+		list.insert(new ListNode<Integer>(5));
+		list.insert(new ListNode<Integer>(2));
+		list = Util.partition(list, 3, getIntegerComparator());
+		assertNotNull(list);
+		//Expecting the head to be null
+		assertNotNull(assertFailTestMsg, list.getHead());
+		int[] arr = new int[]{1,2,2,4,4,3,5};
+		ListNode<Integer> trav = list.getHead();
+		for(int i : arr){
+			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
+			trav = trav.getNext();
+		}
+		assertNull(assertFailTestMsg, trav);
+	}
+	
+	@Test
+	public void test_partition_Case3(){
+		String assertFailTestMsg = "Fails for Input : list = [4,1,4,3,-1,2,5,2] ; val = 3";
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.insert(new ListNode<Integer>(4));
+		list.insert(new ListNode<Integer>(1));
+		list.insert(new ListNode<Integer>(4));
+		list.insert(new ListNode<Integer>(3));
+		list.insert(new ListNode<Integer>(-1));
+		list.insert(new ListNode<Integer>(2));
+		list.insert(new ListNode<Integer>(5));
+		list.insert(new ListNode<Integer>(2));
+		list = Util.partition(list, 3, getIntegerComparator());
+		assertNotNull(list);
+		//Expecting the head to be null
+		assertNotNull(assertFailTestMsg, list.getHead());
+		int[] arr = new int[]{1,-1,2,2,4,4,3,5};
+		ListNode<Integer> trav = list.getHead();
+		for(int i : arr){
+			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
+			trav = trav.getNext();
+		}
+		assertNull(assertFailTestMsg, trav);
+	}
 }
