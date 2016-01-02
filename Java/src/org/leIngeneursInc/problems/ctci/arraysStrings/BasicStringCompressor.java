@@ -11,6 +11,13 @@ package org.leIngeneursInc.problems.ctci.arraysStrings;
  */
 public class BasicStringCompressor {
 	
+	/**
+	 * Compresses the string by appending the number of repititions after each character. Returns the original string if there are no repititions
+	 * Time Complexity : O(n)
+	 * Space complexity : O(n)
+	 * @param inputStr the input string
+	 * @return the compressed string, if compression needed. Original String otherwise.
+	 */
 	public static String compress(String inputStr){
 		if(inputStr == null || inputStr.length() <= 0){
 			return inputStr;
