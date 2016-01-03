@@ -102,6 +102,62 @@ public class UtilTest {
 		}
 	}
 	
+	@Test 
+	public void test_findStartOfLoop_EmptyList(){
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		assertNull("Empty List must return null", Util.findStartOfLoop(list));
+	}
+	
+	@Test
+	public void test_findStartOfLoop_AcyclicList(){
+		LinkedList<Integer> list = getIntegerLinkedList(10);
+		assertNull("Acyclic List must return null", Util.findStartOfLoop(list));
+	}
+	
+	@Test
+	public void test_findStartOfLoop_CyclicList_FixedSmall(){
+		LinkedList<Integer> list = getIntegerLinkedList(11);
+		// Creating cycle at fifth node
+		ListNode<Integer> lastNode = list.getHead();
+		while(lastNode.getNext() != null){
+			lastNode = lastNode.getNext();
+		}
+		ListNode<Integer> cyclicNode = list.getHead();
+		for(int i = 0 ; i < 3 ; i ++){
+			cyclicNode = cyclicNode.getNext();
+		}
+		lastNode.setNext(cyclicNode);
+		System.out.println("Cycle at Value : " +cyclicNode.getVal());
+		Util.findStartOfLoop(list);
+	}
+	
+	@Test
+	public void test_findStartOfLoop_CyclicList_RandomPlacementListsOfRandomSize() {
+		int NUM_ITERS = 10;
+		int MAX_SIZE = 500;
+		// Generating a linked list with cycle
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		ListNode<Integer> nodeForCycle = null;
+		for (int iter = 0; iter < NUM_ITERS; iter++) {
+			int size = (int) (Math.random() * MAX_SIZE) + 1;
+			// Adding 1 to index because i starts with 1
+			int cycleIndex = (int) (Math.random() * size) + 1;
+			for (int i = 1; i <= size; i++) {
+				if (i == cycleIndex) {
+					nodeForCycle = new ListNode<Integer>(i);
+					list.insert(nodeForCycle);
+				} else {
+					list.insert(new ListNode<Integer>(i));
+				}
+			}
+			list.getLastNode().setNext(nodeForCycle);
+			assertEquals("Cyclic List with last node pointing to node at index : " + (cycleIndex - 1),
+					nodeForCycle, Util.findStartOfLoop(list));
+		}
+	}
+	
+	
+	
 	@Test
 	public void test_swapPairs_EmptyList(){
 		LinkedList<Integer> list = new LinkedList<Integer>();

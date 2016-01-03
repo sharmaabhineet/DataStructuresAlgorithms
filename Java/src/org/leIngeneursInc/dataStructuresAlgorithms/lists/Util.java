@@ -99,6 +99,61 @@ public class Util {
 		}
 		return false;
 	}
+	
+	/**
+	 * Detects if a loop is present and returns the start of the loop.
+	 * Time Complexity : O(n)
+	 * Space Complexity : O(1)
+	 * Algorithm:
+	 * 1. Use two pointers to iterate the list. slowPtr moves one step
+	 * 		at a time. fastPtr moves two at a time. 
+	 * 2. while(slowPtr != fastPtr), do
+	 * 		a. Move fastPtr two steps. If no such move possible, Return null. 
+	 * 				<NO CYCLE EXISTS>
+	 * 		b. Move slowPtr on step
+	 *	// If code reaches here. Cycle has been detected. It can be proved 
+	 * 	// mathematically that both the pointers and the start of the list are 
+	 *  // some K steps away from the start of the loop.
+	 *  3. slowPtr = start
+	 *  4. int k = 0   // Just in case you wanna count the steps before the loop starts.
+	 *  4. While(slowPtr != fastPtr), do
+	 *  		a. slowPtr = slowPtr->next
+	 *  		b. fastPtr = fastPtr->next
+	 *  		c. k++
+	 *  5. return slowPtr  // start of the loop is k steps away from the start
+	 *  
+	 * @param list the input linked list
+	 * @return the start of the cycle in the linked list, null if there is no cycle
+	 */
+	public static <T> ListNode<T> findStartOfLoop(LinkedList<T> list){
+		ListNode<T> slowPtr = list.getHead();
+		ListNode<T> fastPtr = list.getHead();
+		// If either the list is empty or first node points to no other 
+		// node, there is no cycle.
+		if(slowPtr == null || slowPtr.getNext() == null){
+			return null;
+		}else{
+			//do nothing here. go ahead.
+		}
+		while(fastPtr != null && fastPtr.getNext() != null){
+			fastPtr = fastPtr.getNext().getNext();
+			slowPtr = slowPtr.getNext();
+			if(fastPtr == slowPtr){
+				break;
+			}
+		}
+		//Check for possibility of no cycle, as there exists one according to the while loop above.
+		if(fastPtr == null || fastPtr.getNext() == null){
+			return null;
+		}
+		// If the code reaches here. There is definitely a cycle in the list.
+		slowPtr = list.getHead();
+		while(slowPtr != fastPtr){
+			slowPtr = slowPtr.getNext();
+			fastPtr = fastPtr.getNext();
+		}
+		return fastPtr;
+	}
 
 	/**
 	 * Swaps nodes in pairs. For E.g. 1 -> 2 -> 3 -> 4 , after swap returns 2 ->
