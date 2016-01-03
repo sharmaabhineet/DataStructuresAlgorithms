@@ -11,6 +11,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Comparator;
 
+import junit.framework.Assert;
+
 import org.junit.Test;
 import org.leIngeneursInc.dataStructuresAlgorithms.lists.LinkedList;
 import org.leIngeneursInc.dataStructuresAlgorithms.lists.ListNode;
@@ -127,8 +129,7 @@ public class UtilTest {
 			cyclicNode = cyclicNode.getNext();
 		}
 		lastNode.setNext(cyclicNode);
-		System.out.println("Cycle at Value : " +cyclicNode.getVal());
-		Util.findStartOfLoop(list);
+		assertEquals("Cyclic List of Size 11 with cycle at Node 4" , cyclicNode,  Util.findStartOfLoop(list));
 	}
 	
 	@Test
@@ -383,5 +384,53 @@ public class UtilTest {
 			trav = trav.getNext();
 		}
 		assertNull(assertFailTestMsg, trav);
+	}
+	
+	@Test
+	public void test_reverse_NullList(){
+		try{
+			Util.reverse(null);
+		}catch(Exception exc){
+			assertTrue("Exception occured : " +exc.getMessage() , false);
+		}
+	}
+	
+	@Test
+	public void test_reverse_EmptyList(){
+		try{
+			Util.reverse(new LinkedList<Integer>());
+		}catch(Exception exc){
+			assertTrue("Exception occured : " +exc.getMessage() , false);
+		}
+	}
+	
+	@Test
+	public void test_reverse_SmallList(){
+		int size= 10;
+		LinkedList<Integer> list = getIntegerLinkedList(size);
+		Util.reverse(list);
+		ListNode<Integer> start = list.getHead();
+		while(start != null){
+			assertEquals("Value of node in reversed list does not match", size--, start.getVal().intValue());
+			start = start.getNext();
+		}
+	}
+	
+	@Test
+	public void test_reverse_RandomListsLarge(){
+		int NUM_ITERS = 100;
+		int MAX_SIZE = 500;
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		ListNode<Integer> nodeForCycle = null;
+		for (int iter = 0; iter < NUM_ITERS; iter++) {
+			int size = (int) (Math.random() * MAX_SIZE) + 1;
+			list = getIntegerLinkedList(size);
+			Util.reverse(list);
+			ListNode<Integer> start = list.getHead();
+			while(start != null){
+				assertEquals("Value of node in reversed list does not match", size--, start.getVal().intValue());
+				start = start.getNext();
+			}
+		}
 	}
 }

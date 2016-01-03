@@ -282,4 +282,54 @@ public class Util {
 		list.setHead(head);
 		return list;
 	}
+	
+	/**
+	 * Reverses the list in place
+	 * Time complexity : O(n)
+	 * Space complexity : O(1)
+	 * Uses the classic algorithm using three pointers and swapping next pointers in place.
+	 * @param list the linked list that needs to be reversed
+	 */
+	public static <T> void reverse(LinkedList<T> list){
+		if(list == null || list.isEmpty()){
+			return;
+		}else{
+			//do nothing here. go ahead.
+		}
+		// Using three pointers a, b, c 
+		// Sequence remains invariant that is a points to b points to c ( a -> b -> c )
+		ListNode<T> a = list.getHead();
+		if(a == null || a.getNext() == null){
+			return;
+		}else{
+			//do nothing here. go ahead
+		}
+		
+		ListNode<T> b = a.getNext();
+		// If only two nodes reverse it manually as a special case
+		if(b.getNext() == null){
+			b.setNext(a);
+			a.setNext(null);
+			list.setHead(b);
+			return;
+		}else{
+			//do nothing here. go ahead
+		}
+		
+		ListNode<T> c = b.getNext();
+		while(b.getNext() != null){
+			b.setNext(a);
+			a = b;
+			b = c;
+			if(c != null){
+				c = c.getNext();
+			}else{
+				//do nothing here. carry on, while loop wud take care of the rest
+			}
+		}
+		//Need to reverse the last node after the loop ends.
+		b.setNext(a);
+		list.getHead().setNext(null);
+		list.setHead(b);
+	}
 }
