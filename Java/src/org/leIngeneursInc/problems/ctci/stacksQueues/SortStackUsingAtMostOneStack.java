@@ -13,6 +13,14 @@ import java.util.Stack;
  */
 public class SortStackUsingAtMostOneStack {
 
+	/**
+	 * Sorts given stack with highest element on the top using "at most" one additional stack
+	 * Time Complexity : O(n^2)
+	 * Space Complexity : O(n)
+	 * @param inputStack the input stack that needs to be sorted
+	 * @param comp comparator for comparison of two elements in the stack
+	 * @return sorted stack
+	 */
 	public static<T> Stack<T> sort(Stack<T> inputStack, Comparator<T> comp){
 		Stack<T> sortedStack = new Stack<T>();
 		while(!inputStack.isEmpty()){
