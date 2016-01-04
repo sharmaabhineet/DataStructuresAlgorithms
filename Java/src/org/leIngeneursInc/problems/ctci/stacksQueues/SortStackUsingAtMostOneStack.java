@@ -6,10 +6,6 @@ package org.leIngeneursInc.problems.ctci.stacksQueues;
 import java.util.Comparator;
 import java.util.Random;
 import java.util.Stack;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
-import java.util.function.ToIntFunction;
-import java.util.function.ToLongFunction;
 
 /**
  * @author Abhineet ( sharma.abhineet31@gmail.com )
