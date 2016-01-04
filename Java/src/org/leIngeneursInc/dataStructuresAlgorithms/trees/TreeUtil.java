@@ -5,6 +5,7 @@ package org.leIngeneursInc.dataStructuresAlgorithms.trees;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -194,4 +195,39 @@ public class TreeUtil {
 		}
 	}
 
+	/**
+	 * checks if given tree is a valid binary search tree
+	 * @param root the root of the tree
+	 * @param comp the comparator object needed to compare the valuse
+	 * @return boolean value indicating whether or not the given tree is a binary search tree
+	 */
+	public static<T> boolean isValidBST(BinaryTreeNode<T> root, Comparator<T> comp){
+		if(comp == null){
+			throw new IllegalArgumentException("Comparator object must not be null");
+		}else{
+			//do nothign here.
+		}
+		
+		if(root == null){
+			return true;
+		} else {
+			if(root.getLeft() == null && root.getRight() == null){
+				return true;
+			}else{
+				if(root.getLeft() != null && comp.compare(root.getVal(), root.getLeft().getVal()) > 0 ){
+					return false;
+				}else{
+					//do nothign here. go ahead
+				}
+				
+				if ( root.getRight() != null && comp.compare(root.getVal(), root.getRight().getVal()) <0){
+					return false;
+				}else{
+					//do nothing here. go ahead.
+				}
+				
+				return isValidBST(root.getLeft(), comp) && isValidBST(root.getRight(), comp);
+			}
+		}
+	}
 }

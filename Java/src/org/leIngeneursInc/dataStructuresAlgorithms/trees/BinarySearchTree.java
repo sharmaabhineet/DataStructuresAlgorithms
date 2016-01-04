@@ -21,7 +21,7 @@ public class BinarySearchTree<T> {
 
 	private BinaryTreeNode<T> root;
 	private Comparator<T> comp;
-	
+
 	/**
 	 * @return the root
 	 */
@@ -30,7 +30,8 @@ public class BinarySearchTree<T> {
 	}
 
 	/**
-	 * @param root the root to set
+	 * @param root
+	 *            the root to set
 	 */
 	public void setRoot(BinaryTreeNode<T> root) {
 		this.root = root;
@@ -44,7 +45,8 @@ public class BinarySearchTree<T> {
 	}
 
 	/**
-	 * @param comp the comp to set
+	 * @param comp
+	 *            the comp to set
 	 */
 	public void setComp(Comparator<T> comp) {
 		this.comp = comp;
@@ -53,199 +55,222 @@ public class BinarySearchTree<T> {
 	/**
 	 * Default constructor
 	 */
-	public BinarySearchTree(){
+	public BinarySearchTree() {
 		this.root = null;
 	}
-	
+
 	/**
 	 * Initializes tree with the given root node
-	 * @param root the root node of the tree
+	 * 
+	 * @param root
+	 *            the root node of the tree
 	 */
-	public BinarySearchTree(BinaryTreeNode<T> root){
+	public BinarySearchTree(BinaryTreeNode<T> root) {
 		this.root = root;
 	}
-	
+
 	/**
-	 * Initializes tree with the given root node and an implicit comparator object
-	 * @param root the root of the tree
-	 * @param comp the comparator used to make all the comparisons 
+	 * Initializes tree with the given root node and an implicit comparator
+	 * object
+	 * 
+	 * @param root
+	 *            the root of the tree
+	 * @param comp
+	 *            the comparator used to make all the comparisons
 	 */
-	public BinarySearchTree(BinaryTreeNode<T> root, Comparator<T> comp){
+	public BinarySearchTree(BinaryTreeNode<T> root, Comparator<T> comp) {
 		this.root = root;
 		this.comp = comp;
 	}
-	
+
 	/**
 	 * @return a boolean value indicating whether or not the tree is empty.
 	 */
-	public boolean isEmpty(){
+	public boolean isEmpty() {
 		return this.root == null;
 	}
-	
+
 	/**
-	 * Returns the node containing the given value. Expects comparator object to be set already. If not 
-	 * throws an IllegalStateException
-	 * @param val the value that needs to be searched 
+	 * Returns the node containing the given value. Expects comparator object to
+	 * be set already. If not throws an IllegalStateException
+	 * 
+	 * @param val
+	 *            the value that needs to be searched
 	 * @return the first node encountered containing that value
 	 */
-	public BinaryTreeNode<T> find(T val){
-		if(root == null || val == null){
+	public BinaryTreeNode<T> find(T val) {
+		if (root == null || val == null) {
 			return null;
-		}else if (this.comp == null){
+		} else if (this.comp == null) {
 			throw new IllegalStateException("Need to set comparator object before calling this method");
-		}else{
-			//do nothing here. go ahead
+		} else {
+			// do nothing here. go ahead
 		}
 		return find(val, this.comp);
 	}
-	
+
 	/**
 	 * Returns the node containing the given value.
-	 * @param val the value that needs to be searched
-	 * @param comp a comparator object to compare the values. Can not be null. Throws IllegalArgumentException if comp is null.
+	 * 
+	 * @param val
+	 *            the value that needs to be searched
+	 * @param comp
+	 *            a comparator object to compare the values. Can not be null.
+	 *            Throws IllegalArgumentException if comp is null.
 	 * @return the first node encountered containing that value
 	 */
-	public BinaryTreeNode<T> find(T val, Comparator<T> comp){
-		if(root == null || val == null){
+	public BinaryTreeNode<T> find(T val, Comparator<T> comp) {
+		if (root == null || val == null) {
 			return null;
-		}else if (comp == null){
+		} else if (comp == null) {
 			throw new IllegalArgumentException("Compartor object can not be null");
-		}else{
-			//do nothing here. go ahead
+		} else {
+			// do nothing here. go ahead
 		}
 		BinaryTreeNode<T> searchNode = root;
-		while(searchNode != null){
-			if(searchNode.getVal().equals(val)){
+		while (searchNode != null) {
+			if (searchNode.getVal().equals(val)) {
 				return searchNode;
-			}else{
-				int comparisonVal =comp.compare(val, root.getVal()); 
-				if( comparisonVal < 0 ){
+			} else {
+				int comparisonVal = comp.compare(val, root.getVal());
+				if (comparisonVal < 0) {
 					searchNode = searchNode.getLeft();
-				}else{
+				} else {
 					searchNode = searchNode.getRight();
 				}
 			}
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Returns the node containing the given value.
-	 * @param val the value that needs to be searched.
+	 * 
+	 * @param val
+	 *            the value that needs to be searched.
 	 * @return the first node encountered containing that value
 	 */
-	public BinaryTreeNode<T> find(Comparable<T> val){
-		if(root == null || val == null){
+	public BinaryTreeNode<T> find(Comparable<T> val) {
+		if (root == null || val == null) {
 			return null;
-		}else{
-			//do nothing here. go ahead
+		} else {
+			// do nothing here. go ahead
 		}
 		BinaryTreeNode<T> searchNode = root;
-		while(searchNode != null){
-			if(searchNode.getVal().equals(val)){
+		while (searchNode != null) {
+			if (searchNode.getVal().equals(val)) {
 				return searchNode;
-			}else{
-				int comparisonVal = val.compareTo(root.getVal()); 
-				if( comparisonVal < 0 ){
+			} else {
+				int comparisonVal = val.compareTo(root.getVal());
+				if (comparisonVal < 0) {
 					searchNode = searchNode.getLeft();
-				}else{
+				} else {
 					searchNode = searchNode.getRight();
 				}
 			}
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Find the node containing the minimum value in the binary search tree
+	 * 
 	 * @return the node containing the minimum value in the binary search tree
 	 */
-	public BinaryTreeNode<T> findMin(){
-		if(root == null){
+	public BinaryTreeNode<T> findMin() {
+		if (root == null) {
 			return null;
-		}else{
-			//do nothing here. go ahead
+		} else {
+			// do nothing here. go ahead
 		}
-		if(root.getLeft() == null){
+		if (root.getLeft() == null) {
 			return root;
-		}else{
+		} else {
 			BinaryTreeNode<T> searchNode = root.getLeft();
-			while(searchNode.getLeft() != null){
+			while (searchNode.getLeft() != null) {
 				searchNode = searchNode.getLeft();
 			}
 			return searchNode;
 		}
 	}
-	
+
 	/**
 	 * Find the node containing the maximum value in the binary search tree
+	 * 
 	 * @return the node containing the maximum value in the binary search tree
 	 */
-	public BinaryTreeNode<T> findMax(){
-		if(root == null){
+	public BinaryTreeNode<T> findMax() {
+		if (root == null) {
 			return null;
-		}else{
-			//do nothing here. go ahead
+		} else {
+			// do nothing here. go ahead
 		}
-		if(root.getRight() == null){
+		if (root.getRight() == null) {
 			return root;
-		}else{
+		} else {
 			BinaryTreeNode<T> searchNode = root.getRight();
-			while(searchNode.getRight() != null){
+			while (searchNode.getRight() != null) {
 				searchNode = searchNode.getRight();
 			}
 			return searchNode;
 		}
 	}
-	
+
 	/**
-	 * Inserts a value in the tree and returns the reference to the node. Throws an IllegalStateException if the 
-	 * implicit comparator object is not set
-	 * @param val the value to be inserted. Cannot be null. Throws IllegalArgumentException if value is null.
+	 * Inserts a value in the tree and returns the reference to the node. Throws
+	 * an IllegalStateException if the implicit comparator object is not set
+	 * 
+	 * @param val
+	 *            the value to be inserted. Cannot be null. Throws
+	 *            IllegalArgumentException if value is null.
 	 * @return the reference to the node that was added in the tree
 	 */
-	public BinaryTreeNode<T> insert(T val){
-		if(val == null){
+	public BinaryTreeNode<T> insert(T val) {
+		if (val == null) {
 			throw new IllegalArgumentException("Value can not be null");
-		}else if (comp == null){
+		} else if (comp == null) {
 			throw new IllegalStateException("Must set the comparator object before calling this method");
-		}else{
-			//do nothing here. go ahead
+		} else {
+			// do nothing here. go ahead
 		}
 		return insert(val, this.comp);
 	}
-	
-	
+
 	/**
-	 * Inserts a value in the tree and returns the reference to the node. 
-	 * @param val the value to be inserted. Cannot be null. Throws IllegalArgumentException if value is null.
-	 * @param comp the comparator object. Cannot be null. Throws IllegalArgumentException if value is null.
+	 * Inserts a value in the tree and returns the reference to the node.
+	 * 
+	 * @param val
+	 *            the value to be inserted. Cannot be null. Throws
+	 *            IllegalArgumentException if value is null.
+	 * @param comp
+	 *            the comparator object. Cannot be null. Throws
+	 *            IllegalArgumentException if value is null.
 	 * @return the reference to the node that was added in the tree
 	 */
-	public BinaryTreeNode<T> insert(T val, Comparator<T> comp){
-		if(val == null){
+	public BinaryTreeNode<T> insert(T val, Comparator<T> comp) {
+		if (val == null) {
 			throw new IllegalArgumentException("Value can not be null");
-		}else if (comp == null){
+		} else if (comp == null) {
 			throw new IllegalArgumentException("Comparator object can not be null");
-		}else{
-			//do nothing here. go ahead
+		} else {
+			// do nothing here. go ahead
 		}
-		if(root == null){
+		if (root == null) {
 			root = new BinaryTreeNode<T>(val);
 			return root;
-		}else{
-			//find the correct location for the node
+		} else {
+			// find the correct location for the node
 			BinaryTreeNode<T> searchNode = root;
-			while(true){
+			while (true) {
 				int compareVal = comp.compare(val, searchNode.getVal());
-				if(compareVal < 0){
-					if(searchNode.getLeft() == null){
+				if (compareVal < 0) {
+					if (searchNode.getLeft() == null) {
 						break;
-					} else{
+					} else {
 						searchNode = searchNode.getLeft();
 					}
-				}else{
-					if(searchNode.getRight() == null){
+				} else {
+					if (searchNode.getRight() == null) {
 						break;
 					} else {
 						searchNode = searchNode.getRight();
@@ -253,112 +278,314 @@ public class BinarySearchTree<T> {
 				}
 			}
 			BinaryTreeNode<T> newNode = new BinaryTreeNode<T>(val, searchNode);
-			if(comp.compare(val, searchNode.getVal()) < 0){
+			if (comp.compare(val, searchNode.getVal()) < 0) {
 				searchNode.setLeft(newNode);
-			}else{
+			} else {
 				searchNode.setRight(newNode);
 			}
 			return newNode;
 		}
 	}
-	
+
 	/**
-	 * Finds the next inorder successor of the first node encountered in the tree containing this value
-	 * @param val the value whose inorder successor needs to be found. 
-	 * @return the node containting the in order successor of the first node in the tree containing  this value. Returns null if the value is not found
+	 * Delete the node containing the given value Throws IllegalStateException
+	 * if the implicit comparator is not set
+	 * 
+	 * @param val
+	 *            the value that needs to be deleted. If the value is not
+	 *            present, nothing is deleted
 	 */
-	public BinaryTreeNode<T> findSuccessor(T val){
-		if(val == null){
+	public void delete(T val) {
+		if (val == null) {
 			throw new IllegalArgumentException("Value can not be null");
-		} else if (this.comp == null){
+		} else if (this.comp == null) {
+			throw new IllegalStateException("Implicit comparator must be set before calling this method.");
+		} else {
+			// do nothign here. go ahead
+		}
+		BinaryTreeNode<T> node = find(val);
+		if (node != null) {
+			delete(node);
+		} else {
+			// do nothing here.
+		}
+	}
+
+	/**
+	 * Delete the node containing the given value Throws IllegalStateException
+	 * if the implicit comparator is not set
+	 * 
+	 * @param val
+	 *            the value that needs to be deleted. If the value is not
+	 *            present, nothing is deleted
+	 */
+	public void delete(T val, Comparator<T> comp) {
+		if (val == null) {
+			throw new IllegalArgumentException("Value can not be null");
+		} else if (comp == null) {
+			throw new IllegalArgumentException("Comparator object can not be null");
+		} else {
+			// do nothign here. go ahead
+		}
+		BinaryTreeNode<T> node = find(val, comp);
+		if (node != null) {
+			delete(node);
+		} else {
+			// do nothing here.
+		}
+	}
+
+	/**
+	 * Delete the given node in the binary tree.
+	 * 
+	 * @param node
+	 *            the node to be deleted
+	 */
+	public void delete(BinaryTreeNode<T> node) {
+		if (node == null) {
+			throw new IllegalArgumentException("Node can not be null");
+		} else {
+			// do nothign here. go ahead
+		}
+
+		// Case 1 : Node does not have any children. It's our lucky day
+		if (node.getLeft() == null && node.getRight() == null) {
+			if (node.getParent().getLeft() == node) {
+				node.getParent().setLeft(null);
+			} else {
+				node.getParent().setRight(null);
+			}
+			node.setParent(null);
+			return;
+		} else {
+			// Case 2 : Case of a single child
+			if (node.getLeft() == null && node.getRight() != null) {
+				if (node.getParent().getLeft() == node) {
+					node.getParent().setLeft(node.getRight());
+				} else {
+					node.getParent().setRight(node.getRight());
+				}
+				node.setRight(null);
+				node.setParent(null);
+				return;
+			} else if (node.getRight() == null && node.getLeft() != null) {
+				if (node.getParent().getLeft() == node) {
+					node.getParent().setLeft(node.getLeft());
+				} else {
+					node.getParent().setRight(node.getLeft());
+				}
+				node.setLeft(null);
+				node.setParent(null);
+				return;
+			} else {
+				// Case 3 : Need to do some processing
+				BinaryTreeNode<T> searchNode = node.getRight();
+				if (searchNode.getLeft() == null) {
+					node.setVal(searchNode.getVal());
+					node.setRight(null);
+					searchNode.setParent(null);
+					return;
+				} else {
+					while (searchNode.getLeft() != null) {
+						searchNode = searchNode.getLeft();
+					}
+					node.setVal(searchNode.getVal());
+					delete(searchNode);
+					return;
+
+				}
+
+			}
+		}
+	}
+
+	/**
+	 * Finds the next inorder successor of the first node encountered in the
+	 * tree containing this value
+	 * 
+	 * @param val
+	 *            the value whose inorder successor needs to be found.
+	 * @return the node containting the in order successor of the first node in
+	 *         the tree containing this value. Returns null if the value is not
+	 *         found
+	 */
+	public BinaryTreeNode<T> findSuccessor(T val) {
+		if (val == null) {
+			throw new IllegalArgumentException("Value can not be null");
+		} else if (this.comp == null) {
 			throw new IllegalStateException("Need to set implicit comparator object before calling this method");
-		} else{
-			//do nothing here. go ahead
+		} else {
+			// do nothing here. go ahead
 		}
 		return findSuccessor(val, this.comp);
 	}
-	
+
 	/**
-	 * Finds the next inorder successor of the first node encountered in the tree containing this value
-	 * @param val the value whose inorder successor needs to be found. 
-	 * @param comp the comparator object needed to make comparisons
-	 * @return the node containting the in order successor of the first node in the tree containing  this value. Returns null if the value is not found
+	 * Finds the next inorder successor of the first node encountered in the
+	 * tree containing this value
+	 * 
+	 * @param val
+	 *            the value whose inorder successor needs to be found.
+	 * @param comp
+	 *            the comparator object needed to make comparisons
+	 * @return the node containting the in order successor of the first node in
+	 *         the tree containing this value. Returns null if the value is not
+	 *         found
 	 */
-	public BinaryTreeNode<T> findSuccessor(T val, Comparator<T> comp){
-		if(val == null){
+	public BinaryTreeNode<T> findSuccessor(T val, Comparator<T> comp) {
+		if (val == null) {
 			throw new IllegalArgumentException("Value can not be null");
-		} else if (comp == null){
+		} else if (comp == null) {
 			throw new IllegalArgumentException("Comparator object can not be null");
-		} else{
-			//do nothing here. go ahead
+		} else {
+			// do nothing here. go ahead
 		}
 		BinaryTreeNode<T> node = find(val, comp);
-		if(node == null){
+		if (node == null) {
 			return null;
-		}else{
+		} else {
 			return findSuccessor(node);
 		}
 	}
-	
+
 	/**
 	 * Finds the next inorder successor of the the given node
-	 * @param node the node whose inorder successor has to be found
-	 * @return the node containting the in order successor of the given node. Returns null if there is no successor for this node.
+	 * 
+	 * @param node
+	 *            the node whose inorder successor has to be found
+	 * @return the node containting the in order successor of the given node.
+	 *         Returns null if there is no successor for this node.
 	 */
-	public BinaryTreeNode<T> findSuccessor(BinaryTreeNode<T> node){
-		if(node == null){
+	public BinaryTreeNode<T> findSuccessor(BinaryTreeNode<T> node) {
+		if (node == null) {
 			throw new IllegalArgumentException("Node can not be null");
-		} else if (this.comp == null){
-			throw new IllegalStateException("Need to set implicit comparator object before calling this method");
-		} else{
-			//do nothing here. go ahead
+		} else {
+			// do nothing here. go ahead
 		}
-		
-		return findSuccessor(node, this.comp);
-	}
-	
-	/**
-	 * Finds the next inorder successor of the the given node. If no right subtree, then there is none. Otherwise, the left most child of the 
-	 * right subtree node is the successor. If there is no leftmost child, then it is the right subtree.
-	 * @param node the node whose inorder successor has to be found
-	 * @param comp the comparator object needed to make comparisons
-	 * @return the node containting the in order successor of the given node. Returns null if there is no successor for this node.
-	 */
-	public BinaryTreeNode<T> findSuccessor(BinaryTreeNode<T> node, Comparator<T> comp){
-		if(node == null){
-			throw new IllegalArgumentException("Node can not be null");
-		} else if (comp == null){
-			throw new IllegalArgumentException("Comparator object can not be null");
-		} else{
-			//do nothing here. go ahead
-		}
-		
-		if(node.getRight() == null){
-			return null;
-		}else{
+
+		if (node.getRight() == null) {
+			BinaryTreeNode<T> parent = node.getParent();
+			while (parent != null && parent.getRight() == node) {
+				node = parent;
+				parent = parent.getParent();
+			}
+			return parent;
+		} else {
 			BinaryTreeNode<T> retNode = node.getRight();
-			while(retNode.getLeft() != null){
+			while (retNode.getLeft() != null) {
 				retNode = retNode.getLeft();
 			}
 			return retNode;
 		}
 	}
-	
+
 	/**
-	 * Find the inorder predecessor of the given node. If there is no left subtree, then null. If yes, then  
-	 * @param node the node whose in order predecessor needs to be found
-	 * @param comp the comparator object needed to make comparisons
+	 * Returns the node containing the largest value less than given value
+	 * Implicit comparator needs to be set before calling this method .
+	 * Otherwise it throws IllegalStateException.
+	 * 
+	 * @param val
+	 *            the value whose predecessor has to be found. Can not be null.
+	 *            Throws IllegalArgumentException if the value is null.
+	 * @return the node containing the largest value less than given value
+	 */
+	public BinaryTreeNode<T> findPredecessor(T val) {
+		if (val == null) {
+			throw new IllegalArgumentException("value can not be null");
+		} else if (this.comp == null) {
+			throw new IllegalStateException("Must set implicit comparator before callign this method");
+		} else {
+			// do nothing here. go ahead
+		}
+
+		return findPredecessor(val, this.comp);
+	}
+
+	/**
+	 * Returns the node containing the largest value less than given value
+	 * 
+	 * @param val
+	 *            the value whose predecessor has to be found
+	 * @param comp
+	 *            the comparator object needed to make comparisons
+	 * @return the node containing the largest value less than given value
+	 */
+	public BinaryTreeNode<T> findPredecessor(T val, Comparator<T> comp) {
+		if (val == null) {
+			throw new IllegalArgumentException("value can not be null");
+		} else if (this.comp == null) {
+			throw new IllegalArgumentException("Comparator object must not be null");
+		} else {
+			// do nothing here. go ahead
+		}
+
+		BinaryTreeNode<T> node = find(val, comp);
+		return findPredecessor(node);
+	}
+
+	/**
+	 * Find the inorder predecessor of the given node. If there is no left
+	 * subtree, then null. If yes, then
+	 * 
+	 * @param node
+	 *            the node whose in order predecessor needs to be found
+	 * @param comp
+	 *            the comparator object needed to make comparisons
 	 * @return
 	 */
-	public BinaryTreeNode<T> findPredecessor(BinaryTreeNode<T> node, Comparator<T> comp){
-		if(node == null){
+	public BinaryTreeNode<T> findPredecessor(BinaryTreeNode<T> node) {
+		if (node == null) {
 			throw new IllegalArgumentException("Node can not be null");
-		} else if (comp == null){
-			throw new IllegalArgumentException("Comparator object can not be null");
 		} else {
-			//do nothign here. go ahead
+			// do nothign here. go ahead
 		}
-		return null;
+		if (node.getLeft() != null) {
+			node = node.getLeft();
+			while (node.getRight() != null) {
+				node = node.getRight();
+			}
+			return node;
+		} else {
+			BinaryTreeNode<T> parent = node.getParent();
+			while (parent != null && parent.getLeft() == parent) {
+				node = parent;
+				parent = parent.getParent();
+			}
+			return parent;
+		}
+	}
+
+	/**
+	 * Checks for a valid binary search tree. Implicit comparator object must be
+	 * set before callign this method, otherwise it throws an
+	 * IllegalStateException
+	 * 
+	 * @return boolean value indicating whether or not the tree is a valid
+	 *         binary search tree
+	 */
+	public boolean isValidBST() {
+		if (this.comp == null) {
+			throw new IllegalStateException("Implicit comparator object must be set before calling this method");
+		} else {
+			// do nothing here. go ahead
+		}
+		return TreeUtil.isValidBST(root, this.comp);
+	}
+
+	/**
+	 * Checks whether the binary search tree is a valid one.
+	 * @param comp
+	 *            the comparator object
+	 * @return boolean value indicating whether or not the binary search tree is
+	 *         a valid one
+	 */
+	public boolean isValidBST(Comparator<T> comp) {
+		if (comp == null) {
+			throw new IllegalArgumentException("Comparator object must not be null");
+		} else {
+			// do nothing here. go ahead
+		}
+		return TreeUtil.isValidBST(root, comp);
 	}
 
 }
