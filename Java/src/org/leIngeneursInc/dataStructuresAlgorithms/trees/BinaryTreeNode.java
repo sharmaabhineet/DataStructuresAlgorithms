@@ -106,5 +106,10 @@ public class BinaryTreeNode<T> {
 	public void setVal(T val) {
 		this.val = val;
 	}
-
+	
+	@Override
+	public String toString(){
+		return  "Node Val : " +this.val +"\n\tisRoot ? " +(this.parent == null)
+				+"\n\tisLeaf ? " +(this.left == null && this.right == null);
+	}
 }

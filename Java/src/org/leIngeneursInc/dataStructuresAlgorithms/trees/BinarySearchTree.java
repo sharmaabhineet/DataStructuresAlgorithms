@@ -132,7 +132,7 @@ public class BinarySearchTree<T> {
 			if (searchNode.getVal().equals(val)) {
 				return searchNode;
 			} else {
-				int comparisonVal = comp.compare(val, root.getVal());
+				int comparisonVal = comp.compare(val, searchNode.getVal());
 				if (comparisonVal < 0) {
 					searchNode = searchNode.getLeft();
 				} else {
@@ -161,7 +161,7 @@ public class BinarySearchTree<T> {
 			if (searchNode.getVal().equals(val)) {
 				return searchNode;
 			} else {
-				int comparisonVal = val.compareTo(root.getVal());
+				int comparisonVal = val.compareTo(searchNode.getVal());
 				if (comparisonVal < 0) {
 					searchNode = searchNode.getLeft();
 				} else {
@@ -347,56 +347,66 @@ public class BinarySearchTree<T> {
 		} else {
 			// do nothign here. go ahead
 		}
-
-		// Case 1 : Node does not have any children. It's our lucky day
-		if (node.getLeft() == null && node.getRight() == null) {
-			if (node.getParent().getLeft() == node) {
-				node.getParent().setLeft(null);
-			} else {
-				node.getParent().setRight(null);
-			}
-			node.setParent(null);
-			return;
-		} else {
-			// Case 2 : Case of a single child
-			if (node.getLeft() == null && node.getRight() != null) {
-				if (node.getParent().getLeft() == node) {
-					node.getParent().setLeft(node.getRight());
-				} else {
-					node.getParent().setRight(node.getRight());
-				}
-				node.setRight(null);
-				node.setParent(null);
+		
+		boolean isRoot = ( node.getParent() == null );
+	
+		// Case 0 : Leaf Node
+		if( node.getLeft() == null && node.getRight() == null ){
+			if(isRoot){
+				setRoot(null);
 				return;
-			} else if (node.getRight() == null && node.getLeft() != null) {
-				if (node.getParent().getLeft() == node) {
-					node.getParent().setLeft(node.getLeft());
-				} else {
-					node.getParent().setRight(node.getLeft());
+			}else{
+				// Remove reference from its parent node
+				if(node.getParent().getLeft() == node){
+					// This node is left child of its parent
+					node.getParent().setLeft(null);
+				}else{
+					node.getParent().setRight(null);
 				}
-				node.setLeft(null);
-				node.setParent(null);
 				return;
-			} else {
-				// Case 3 : Need to do some processing
-				BinaryTreeNode<T> searchNode = node.getRight();
-				if (searchNode.getLeft() == null) {
-					node.setVal(searchNode.getVal());
-					node.setRight(null);
-					searchNode.setParent(null);
-					return;
-				} else {
-					while (searchNode.getLeft() != null) {
-						searchNode = searchNode.getLeft();
-					}
-					node.setVal(searchNode.getVal());
-					delete(searchNode);
-					return;
-
-				}
-
 			}
 		}
+		
+		// Case 1 : One Child
+		if(node.getLeft() == null && node.getRight() != null){
+			if(!isRoot){
+				// Adjust the reference of its parent node to point to its not null child
+				if(node.getParent().getLeft() == node){
+					// This node is left child of its parent
+					node.getParent().setLeft(node.getRight());
+				}else{
+					node.getParent().setRight(node.getRight());
+					
+				}
+				node.getRight().setParent(node.getParent());
+			}else{
+				setRoot(node.getRight());
+				node.getRight().setParent(null);
+			}
+			return;
+		}else if ( node.getLeft() != null && node.getRight() == null ){
+			if(!isRoot){
+				// Adjust the reference of its parent node to point to its not null child
+				if(node.getParent().getLeft() == node){
+					// This node is left child of its parent
+					node.getParent().setLeft(node.getLeft());
+				}else{
+					node.getParent().setRight(node.getLeft());
+				}
+				node.getLeft().setParent(node.getParent());
+			}else{
+				setRoot(node.getLeft());
+				node.getLeft().setParent(null);
+			}
+			return;
+		}
+		
+		// Case 2 : Both children
+		//Find inorder successor of this tree
+		BinaryTreeNode<T> searchNode = findSuccessor(node);
+		assert searchNode != null; 	// If this assertion fails, there is some issue in finding successor code
+		node.setVal(searchNode.getVal());
+		delete(searchNode);
 	}
 
 	/**
@@ -462,7 +472,7 @@ public class BinarySearchTree<T> {
 		} else {
 			// do nothing here. go ahead
 		}
-
+		
 		if (node.getRight() == null) {
 			BinaryTreeNode<T> parent = node.getParent();
 			while (parent != null && parent.getRight() == node) {
@@ -547,7 +557,7 @@ public class BinarySearchTree<T> {
 			return node;
 		} else {
 			BinaryTreeNode<T> parent = node.getParent();
-			while (parent != null && parent.getLeft() == parent) {
+			while (parent != null && parent.getLeft() == node) {
 				node = parent;
 				parent = parent.getParent();
 			}

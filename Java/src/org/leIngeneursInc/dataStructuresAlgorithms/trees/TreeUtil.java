@@ -214,13 +214,13 @@ public class TreeUtil {
 			if(root.getLeft() == null && root.getRight() == null){
 				return true;
 			}else{
-				if(root.getLeft() != null && comp.compare(root.getVal(), root.getLeft().getVal()) > 0 ){
+				if(root.getLeft() != null && comp.compare(root.getVal(), root.getLeft().getVal()) < 0 ){
 					return false;
 				}else{
 					//do nothign here. go ahead
 				}
 				
-				if ( root.getRight() != null && comp.compare(root.getVal(), root.getRight().getVal()) <0){
+				if ( root.getRight() != null && comp.compare(root.getVal(), root.getRight().getVal()) > 0){
 					return false;
 				}else{
 					//do nothing here. go ahead.

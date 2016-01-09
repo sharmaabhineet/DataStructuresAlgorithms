@@ -13,10 +13,10 @@ import java.util.Set;
  * @author Abhineet (sharma.abhineet31@gmail.com)
  *
  */
-
+// This solution does not work on large inputs.
 public class TextEditor {
 
-	private static final String DIR_PATH = "D:/Downloads/";
+	private static final String DIR_PATH = "src/org/leIngeneursInc/problems/fbHackerCup2016/";
 	private static final String FILE_NAME = "text_editor.txt";
 
 	/**
