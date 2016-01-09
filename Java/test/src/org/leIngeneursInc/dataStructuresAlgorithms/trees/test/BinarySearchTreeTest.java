@@ -286,8 +286,8 @@ public class BinarySearchTreeTest {
 	
 	@Test
 	public void test_Delete_RandomBST(){
-		int MAX_ITER = 1000;
-		int MAX_SIZE = 10;
+		int MAX_ITER = 100;
+		int MAX_SIZE = 100;
 		for(int iter= 0 ; iter < MAX_ITER; iter++){
 			List<Integer> lstVals = new ArrayList<Integer>();
 			BinarySearchTree<Integer> bst = generateRandomIntTree(MAX_SIZE, lstVals,
