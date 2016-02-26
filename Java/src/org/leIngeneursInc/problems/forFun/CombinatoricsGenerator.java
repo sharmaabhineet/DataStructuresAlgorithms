@@ -54,7 +54,7 @@ public class CombinatoricsGenerator {
 			elemSet.add(i);
 		}
 
-		Set<Set<Integer>> comb =  generateCombinatoricsTakenAtMostKRec(elemSet, 5);
+		Set<Set<Integer>> comb =  generateCombinatoricsTakenAtMostKRec(elemSet, 2);
 		int index = 1;
 		for (Set<Integer> combSet : comb) {
 			System.out.println("Comb " + index++ + " --> " + combSet);
