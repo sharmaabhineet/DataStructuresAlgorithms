@@ -151,6 +151,45 @@ public class TreeUtil {
 	}
 	
 	/**
+	 * Reverse Level Order Traversal of a binary tree starting from the given node as root. Reverse level order traversal 
+	 * implies starting level order traversal in reverse fashion.
+	 * For Example : 
+	 * 			1
+	 * 		2		3
+	 * Reverse order is : 2 - 3 - 1 
+	 * Although the previous method, returns list of list of values, that can also be used for this purpose. Implementing a new way
+	 * just for the heck of it.
+	 * @param root the root node of the tree
+	 * @return List of values traversed in reverse level order fashion
+	 */
+	public static<T> List<T> reverseLevelOrderTraversal(BinaryTreeNode<T> root){
+		if(root == null ){
+			return Collections.emptyList();
+		}else{
+			//do nothing here. fun is about to begin.
+		}
+		List<T> retList = new ArrayList<T>();
+		Queue<BinaryTreeNode<T>> queueVals = new LinkedList<BinaryTreeNode<T>>();
+		Stack<T> stackVals = new Stack<T>();
+		queueVals.add(root);
+		while(!queueVals.isEmpty()){
+			BinaryTreeNode<T> node = queueVals.poll();
+			stackVals.push(node.getVal());
+			if(node.getRight() != null){
+				queueVals.add(node.getRight());
+			}
+			if (node.getLeft() != null){
+				queueVals.add(node.getLeft());
+			}
+		}
+		
+		while(!stackVals.isEmpty()){
+			retList.add(stackVals.pop());
+		}
+		return retList; 
+	}
+	
+	/**
 	 * Returns the lowest common ancestor of two given nodes from the root node. This method ensures that the given nodes have root as their ancestor
 	 * @param root the root of the tree
 	 * @param node1 first node

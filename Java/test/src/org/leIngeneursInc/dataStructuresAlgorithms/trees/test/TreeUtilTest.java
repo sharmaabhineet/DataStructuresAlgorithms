@@ -246,4 +246,60 @@ public class TreeUtilTest {
 			}
 		}
 	}
+	
+	@Test
+	public void reverseOrderTraversal_EmptyTree(){
+		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
+		assertTrue("Expected an empty list for an empty tree", TreeUtil.reverseLevelOrderTraversal(bst.getRoot()).isEmpty());
+	}
+	
+	@Test
+	public void reverseOrderTraversal_SingleNode(){
+		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
+		bst.setComp(getIntComparator());
+		bst.insert(1);
+		List<Integer> lst = TreeUtil.reverseLevelOrderTraversal(bst.getRoot());
+		assertTrue("Expected a non empty list for tree with single node", !lst.isEmpty());
+		assertTrue("Expecting size of the list to be 1", lst.size() == 1);
+		assertEquals(1, (int)lst.get(0));
+	}
+	
+	@Test
+	public void reverseOrderTraversal_SimpleTree(){
+		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
+		bst.setComp(getIntComparator());
+		bst.insert(2);
+		bst.insert(1);
+		bst.insert(3);
+		List<Integer> lst = TreeUtil.reverseLevelOrderTraversal(bst.getRoot());
+		assertTrue("Expected a non empty list for tree with single node", !lst.isEmpty());
+		assertTrue("Expecting size of the list to be 3", lst.size() == 3);
+		assertEquals(1, (int)lst.get(0));
+		assertEquals(3, (int)lst.get(1));
+		assertEquals(2, (int)lst.get(2));
+	}
+	
+	@Test
+	public void reverseOrderTraversal_SimpleTestCase(){
+		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
+		bst.setComp(getIntComparator());
+		bst.insert(100);
+		bst.insert(50);
+		bst.insert(150);
+		bst.insert(30);
+		bst.insert(70);
+		bst.insert(60);
+		bst.insert(120);
+		bst.insert(130);
+		bst.insert(170);
+		bst.insert(160);
+		List<Integer> lst = TreeUtil.reverseLevelOrderTraversal(bst.getRoot());
+		assertTrue("Expected a non empty list for tree with single node", !lst.isEmpty());
+		int[] expectedVals = new int[]{60,130,160, 30,70, 120, 170, 50, 150, 100};
+		assertTrue("Expecting size of the list to be 3", lst.size() == expectedVals.length);
+		for(int index = 0; index < expectedVals.length; index++){
+			assertEquals(expectedVals[index], (int)lst.get(index));
+		}
+	}
+	
 }
