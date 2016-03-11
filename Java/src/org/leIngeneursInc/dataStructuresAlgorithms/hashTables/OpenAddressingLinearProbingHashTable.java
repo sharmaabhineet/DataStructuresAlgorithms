@@ -7,51 +7,27 @@ package org.leIngeneursInc.dataStructuresAlgorithms.hashTables;
  * @author Abhineet
  *
  */
+/**
+ * @author Abhineet
+ *
+ * @param <V>
+ */
 class OpenAddressingLinearProbingHashTable<V> extends OpenAddressingHashTable<V> {
 
 	/* (non-Javadoc)
 	 * @see org.leIngeneursInc.dataStructuresAlgorithms.hashTables.OpenAddressingHashTable#resolveCollision(java.lang.Object)
 	 */
 	@Override
-	protected int resolveCollision(V val) {
-		// TODO Auto-generated method stub
-		return 0;
+	protected int resolveCollision(int index){ 
+		int newIndex = (index + 1) % arrEntries.length;
+		while(newIndex != index){
+			if(arrEntries[newIndex] == null || arrEntries[newIndex] == DUMMY_ENTRY){
+				return newIndex;
+			}else{
+				newIndex = ( newIndex + 1 ) % arrEntries.length;
+			}
+		}
+		increaseSize();
+		return resolveCollision(index);
 	}
-
-	/* (non-Javadoc)
-	 * @see org.leIngeneursInc.dataStructuresAlgorithms.hashTables.HashTable#add(java.lang.Object)
-	 */
-	@Override
-	public void add(V value) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/* (non-Javadoc)
-	 * @see org.leIngeneursInc.dataStructuresAlgorithms.hashTables.HashTable#lookup(java.lang.Object)
-	 */
-	@Override
-	public boolean lookup(V value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.leIngeneursInc.dataStructuresAlgorithms.hashTables.HashTable#delete(java.lang.Object)
-	 */
-	@Override
-	public boolean delete(V value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.leIngeneursInc.dataStructuresAlgorithms.hashTables.OpenAddressingHashTable#increaseSize()
-	 */
-	@Override
-	protected void increaseSize() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

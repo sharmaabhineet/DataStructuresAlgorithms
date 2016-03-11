@@ -14,6 +14,11 @@ import java.util.Random;
  *
  */
 public abstract class HashTable<V> {
+	
+	/**
+	 * Choosing an arbitrary prime number for now.
+	 */
+	protected static final int DEFAULT_ARR_SIZE = 1789;
 
 	public static enum CollisionStrategy{
 		/**

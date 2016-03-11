@@ -13,14 +13,9 @@ import org.leIngeneursInc.dataStructuresAlgorithms.lists.Util;
  */
 class ChainingHashTable<V> extends HashTable<V> {
 	
-	/**
-	 * Choosing an arbitrary prime number for now.
-	 */
-	private static final int DEFAULT_ARR_SIZE = 1789;
-	
-	// I know what I am doing here. Warning can be suppressed.
+	// I know what I am doing here. Warning can be suppressed for trivial reasons.
 	@SuppressWarnings("unchecked")
-	private LinkedList<V>[] arrLists = (LinkedList<V>[])new Object[DEFAULT_ARR_SIZE]; 
+	private LinkedList<V>[] arrLists = (LinkedList<V>[])new LinkedList[DEFAULT_ARR_SIZE]; 
 
 	/* (non-Javadoc)
 	 * @see org.leIngeneursInc.dataStructuresAlgorithms.hashTables.HashTable#add(java.lang.Object)
@@ -29,7 +24,7 @@ class ChainingHashTable<V> extends HashTable<V> {
 	public void add(V value) {
 		// considering just in case object returns a negative hash code 
 		// to check out this implementation's limits.
-		int hash = Math.abs(value.hashCode()) % DEFAULT_ARR_SIZE ;
+		int hash = Math.abs(value.hashCode()) % arrLists.length ;
 		if(arrLists[hash] == null){
 			arrLists[hash] = new LinkedList<V>();
 		}
@@ -56,7 +51,7 @@ class ChainingHashTable<V> extends HashTable<V> {
 	public boolean lookup(V value) {
 		// considering just in case object returns a negative hash code 
 		// to check out this implementation's limits.
-		int hash = Math.abs(value.hashCode()) % DEFAULT_ARR_SIZE ;
+		int hash = Math.abs(value.hashCode()) % arrLists.length ;
 		if(arrLists[hash] == null || arrLists[hash].isEmpty()){
 			return false;
 		}else{
@@ -71,7 +66,7 @@ class ChainingHashTable<V> extends HashTable<V> {
 	public boolean delete(V value) {
 		// considering just in case object returns a negative hash code 
 		// to check out this implementation's limits.
-		int hash = Math.abs(value.hashCode()) % DEFAULT_ARR_SIZE ;
+		int hash = Math.abs(value.hashCode()) % arrLists.length ;
 		if(arrLists[hash] == null || arrLists[hash].isEmpty()){
 			return false;
 		}else{
