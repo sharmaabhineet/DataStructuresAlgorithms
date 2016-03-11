@@ -10,8 +10,9 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Comparator;
-
-import junit.framework.Assert;
+import java.util.LinkedHashSet;
+import java.util.Random;
+import java.util.Set;
 
 import org.junit.Test;
 import org.leIngeneursInc.dataStructuresAlgorithms.lists.LinkedList;
@@ -433,4 +434,41 @@ public class UtilTest {
 			}
 		}
 	}
+	
+	@Test
+	public void test_findNode(){
+		final int NUM_ITERS = 100;
+		final int MAX_SIZE = 500;
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		//Randomly Generate this list with unique numbers and 
+		// try to find out some that exist and some that don't
+		final int MAX_RANGE = MAX_SIZE * NUM_ITERS;
+		Random rndm = new Random();
+		Set<Integer> setVals = new LinkedHashSet<Integer>();
+		for(int index = 0; index < MAX_SIZE; index++){
+			int val = -1;
+			do{
+				val = rndm.nextInt(MAX_RANGE);
+			}while(setVals.contains(val));
+			setVals.add(val);
+			list.insert(new ListNode<Integer>(val));
+		}
+		Integer[] arrVals = setVals.toArray(new Integer[setVals.size()]);
+		for(int iter = 0; iter < NUM_ITERS; iter++){
+			int randIndex=  rndm.nextInt(arrVals.length);
+			ListNode<Integer> node = Util.findNode( arrVals[randIndex], list.getHead());
+			assertNotNull(node);
+			assertEquals(arrVals[randIndex], node.getVal());
+		}
+		
+		for(int iter = 0; iter < MAX_SIZE + 100; iter++){
+			if(setVals.contains(iter)){
+				continue;
+			}else{
+				ListNode<Integer> node = Util.findNode( iter, list.getHead());
+				assertNull(node);
+			}
+		}
+	}
+	
 }

@@ -35,7 +35,33 @@ public class Util {
 
 		return travNode;
 	}
+	
+	/**
+	 * Returns the reference to the node referring to the node containing given
+	 * value, starting from the list pointed to by the startingPoint. 
+	 * 
+	 * @param val
+	 *            the value that has to be searched
+	 * @param listNode
+	 *            the starting node from where the search has to be made. 
+	 * @return the node containing the value. Null Otherwise, if the value is not
+	 *         found or list is empty or has just one element
+	 */
+	public static<T> ListNode<T> findNode(T val, ListNode<T> startingPoint){
+		if (val == null) {
+			throw new IllegalArgumentException("Value can not be null");
+		} else if (startingPoint == null || startingPoint.getNext() == null) {
+			return null;
+		} else {
+			// do nothing here. go ahead.
+		}
 
+		while (startingPoint != null && !(val.equals(startingPoint.getVal()))) {
+			startingPoint = startingPoint.getNext();
+		}
+		return startingPoint;
+	}
+	
 	/**
 	 * Returns the reference to the node referring to the node containing given
 	 * value, starting from the list pointed to by the listNode. One corner case
@@ -332,4 +358,5 @@ public class Util {
 		list.getHead().setNext(null);
 		list.setHead(b);
 	}
+	
 }
