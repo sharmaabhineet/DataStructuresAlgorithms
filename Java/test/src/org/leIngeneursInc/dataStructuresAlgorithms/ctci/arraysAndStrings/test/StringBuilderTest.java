@@ -201,7 +201,7 @@ public class StringBuilderTest {
 	public void testSubStringStartEnd(){
 		final int NUM_ITER = 2;
 		Random rndm = new Random();
-		String rndmStr = getRandomString(rndm.nextInt(NUM_ITER * 10));
+		String rndmStr = getRandomString(rndm.nextInt(NUM_ITER * 10) + 1);
 		StringBuilder strBuilder = new StringBuilder(rndmStr);
 		for(int iter = 0; iter < NUM_ITER; iter++){
 			int index = rndm.nextInt(strBuilder.length());

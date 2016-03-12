@@ -30,4 +30,21 @@ class OpenAddressingLinearProbingHashTable<V> extends OpenAddressingHashTable<V>
 		increaseSize();
 		return resolveCollision(index);
 	}
+	
+	/* (non-Javadoc)
+	 * @see org.leIngeneursInc.dataStructuresAlgorithms.hashTables.OpenAddressingHashTable#locateIndex(int, java.lang.Object)
+	 */
+	@Override
+	protected int locateIndex(int index, V value){
+		int newIndex = index;
+		do{
+			if(arrEntries[newIndex] != DUMMY_ENTRY && 
+						(value == arrEntries[newIndex].value || value.equals(arrEntries[newIndex].value))){
+				return newIndex;
+			}else{
+				newIndex = ( newIndex + 1 ) % arrEntries.length;
+			}
+		}while(arrEntries[newIndex] != null && newIndex != index);
+		return -1;
+	}
 }

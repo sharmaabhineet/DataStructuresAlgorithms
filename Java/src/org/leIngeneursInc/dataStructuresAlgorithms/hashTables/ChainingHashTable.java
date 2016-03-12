@@ -28,7 +28,6 @@ class ChainingHashTable<V> extends HashTable<V> {
 		if(arrLists[hash] == null){
 			arrLists[hash] = new LinkedList<V>();
 		}
-		
 		/*
 		 * If the list is empty. Simply insert the node
 		 * Otherwise insert at the head. Now, my implementation does not provide 
@@ -41,7 +40,6 @@ class ChainingHashTable<V> extends HashTable<V> {
 			newHead.setNext(arrLists[hash].getHead());
 			arrLists[hash].setHead(newHead);
 		}
-		
 	}
 
 	/* (non-Javadoc)

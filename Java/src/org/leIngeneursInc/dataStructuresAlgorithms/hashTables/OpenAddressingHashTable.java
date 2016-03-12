@@ -101,18 +101,7 @@ abstract class OpenAddressingHashTable<V> extends HashTable<V> {
 	 * @param value the value to search for
 	 * @return the index of the entry containing the value. -1 Otherwise, if the value does ont exist
 	 */
-	private int locateIndex(int index, V value){
-		int newIndex = index;
-		do{
-			if(arrEntries[newIndex] != DUMMY_ENTRY && 
-						(value == arrEntries[newIndex].value || value.equals(arrEntries[newIndex].value))){
-				return newIndex;
-			}else{
-				newIndex = ( newIndex + 1 ) % arrEntries.length;
-			}
-		}while(arrEntries[newIndex] != null && newIndex != index);
-		return -1;
-	}
+	protected abstract int locateIndex(int index, V value);
 	
 	@SuppressWarnings("unchecked")
 	protected final void increaseSize() {
@@ -142,8 +131,8 @@ abstract class OpenAddressingHashTable<V> extends HashTable<V> {
 				if(isPrime(startingPoint)){
 					return startingPoint; 
 				}else{
-					if(startingPoint < Integer.MAX_VALUE - 6){
-						startingPoint += 6;
+					if(startingPoint < Integer.MAX_VALUE - 1){
+						startingPoint++;
 					}else{
 						break;
 					}

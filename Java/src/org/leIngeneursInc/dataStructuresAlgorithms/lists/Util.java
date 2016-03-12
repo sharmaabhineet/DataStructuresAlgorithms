@@ -50,12 +50,11 @@ public class Util {
 	public static<T> ListNode<T> findNode(T val, ListNode<T> startingPoint){
 		if (val == null) {
 			throw new IllegalArgumentException("Value can not be null");
-		} else if (startingPoint == null || startingPoint.getNext() == null) {
+		} else if (startingPoint == null ) {
 			return null;
 		} else {
 			// do nothing here. go ahead.
 		}
-
 		while (startingPoint != null && !(val.equals(startingPoint.getVal()))) {
 			startingPoint = startingPoint.getNext();
 		}

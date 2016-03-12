@@ -39,7 +39,6 @@ public abstract class HashTable<V> {
 		SURPRISE_ME							
 	};
 	
-	
 	/**
 	 * Factory method that returns a hash table implementation given a collision resolution strategy
 	 * @param colStrat the collision strategy to be used. Collision strategies are defined in HasthTable.CollisionStrategy

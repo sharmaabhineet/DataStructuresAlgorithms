@@ -2,8 +2,11 @@ package org.leIngeneursInc.dataStructuresAlgorithms;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.test.StringBuilderTest;
+import org.leIngeneursInc.dataStructuresAlgorithms.hashTables.test.HashTablesTest;
 import org.leIngeneursInc.dataStructuresAlgorithms.lists.test.LinkedListTest;
 import org.leIngeneursInc.dataStructuresAlgorithms.lists.test.UtilTest;
+import org.leIngeneursInc.dataStructuresAlgorithms.sorting.test.SortTest;
 import org.leIngeneursInc.dataStructuresAlgorithms.trees.test.BinarySearchTreeTest;
 import org.leIngeneursInc.dataStructuresAlgorithms.trees.test.TreeUtilTest;
 
@@ -18,7 +21,10 @@ import org.leIngeneursInc.dataStructuresAlgorithms.trees.test.TreeUtilTest;
    LinkedListTest.class,
    UtilTest.class,
    BinarySearchTreeTest.class,
-   TreeUtilTest.class
+   TreeUtilTest.class,
+   HashTablesTest.class,
+   StringBuilderTest.class,
+   SortTest.class
 })
 public class RunAllUnitTests {   
 }  	
