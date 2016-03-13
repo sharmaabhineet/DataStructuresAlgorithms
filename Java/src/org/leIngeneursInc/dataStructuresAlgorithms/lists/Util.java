@@ -227,7 +227,7 @@ public class Util {
 	 * 
 	 * For example,
 	 * Given 1->4->3->2->5->2 and x = 3,
-	 * return 1->2->2->4->3->5.
+	 * return 1->4->2->2->3->5.
 	 * 
 	 * This problem is listed on Leet code : 	https://leetcode.com/problems/partition-list/
 	 * 
@@ -356,6 +356,103 @@ public class Util {
 		b.setNext(a);
 		list.getHead().setNext(null);
 		list.setHead(b);
+	}
+	
+	/**
+	 * Paritions the list such that all the nodes less than the given value 
+	 * are on the left, followed by all the nodes with the same value (if present)
+	 * followed by all the nodes with greater value than the given value. This function 
+	 * also preserves the order of the node insertion. It does in place swaps.
+	 * Time Complexity : O(n)
+	 * Space Complexity : O(1)
+	 * Variation of CTCI Linked list question
+	 * @param list Given list 
+	 * @param val value around which partitioning is to be done
+	 * @param comp comparator to compare all the values.
+	 */
+	public static<T> void partitionSeparately(LinkedList<T> list, T val, Comparator<T> comp){
+		if(list == null || list.isEmpty() || val == null){
+			return;
+		}else if(comp == null){
+			throw new IllegalArgumentException("Comparator must not be null");
+		}else{
+			//do nothing here. We got work to do.
+		}
+		
+		//O(1) space allocation
+		ListNode<T> smallList = null;
+		ListNode<T> smallListEnd = null;
+		ListNode<T> sameList = null;
+		ListNode<T> sameListEnd = null;
+		ListNode<T> largeList = null;
+		ListNode<T> largeListEnd = null;
+		
+		ListNode<T> travNode = list.getHead();
+		while(travNode != null){
+			T nodeVal = travNode.getVal();
+			int compVal = comp.compare(nodeVal, val);
+			if(compVal < 0){
+				if(smallList == null){
+					smallList = smallListEnd = travNode;
+				}else{
+					smallListEnd.setNext(travNode);
+					smallListEnd = travNode;
+				}
+			} else if (compVal > 0){
+				if(largeList == null){
+					largeList = largeListEnd = travNode;
+				}else{
+					largeListEnd.setNext(travNode);
+					largeListEnd = travNode;
+				}
+			} else{
+				if(sameList == null){
+					sameList = sameListEnd = travNode;
+				}else{
+					sameListEnd.setNext(travNode);
+					sameListEnd = travNode;
+				}
+			}
+			
+			travNode = travNode.getNext();
+		}
+
+		// Re-arraging the pointers
+		if(largeListEnd != null){
+			largeListEnd.setNext(null);
+		}else{
+			if(sameListEnd != null){
+				sameListEnd.setNext(null);
+			}else{
+				//Because there is atleast one node in the list
+				smallListEnd.setNext(null);
+			}
+		}
+		
+		
+		//First of all re-arranging the head of the list
+		if(smallList != null){
+			list.setHead(smallList);
+			if(sameList != null){
+				smallListEnd.setNext(sameList);
+				sameListEnd.setNext(largeList);
+			}else{
+				smallListEnd.setNext(largeList);
+			}
+		} else{
+			if(sameList != null){
+				list.setHead(sameList);
+				if(largeList != null){
+					sameListEnd.setNext(largeList);
+				}else{
+					//do nothing here.
+				}
+			} else{
+				//Because we know there is atleast one node present.
+				list.setHead(largeList);
+			}
+		}
+		
 	}
 	
 }

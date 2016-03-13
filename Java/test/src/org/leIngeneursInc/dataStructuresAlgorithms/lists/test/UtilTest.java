@@ -258,7 +258,7 @@ public class UtilTest {
 	@Test
 	public void test_partition_EmptyList(){
 		LinkedList<Integer> list = new LinkedList<Integer>();
-		list = Util.partition(list, 0, getIntegerComparator());
+		Util.partition(list, 0, getIntegerComparator());
 		assertNotNull(list);
 		//Expecting the head to be null
 		assertNull(list.getHead());
@@ -269,7 +269,7 @@ public class UtilTest {
 	public void test_partition_SingleNode(){
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.insert(new ListNode<Integer>(1));
-		list = Util.partition(list, 0, getIntegerComparator());
+		Util.partition(list, 0, getIntegerComparator());
 		assertNotNull(list);
 		//Expecting the head to be null
 		assertNotNull(list.getHead());
@@ -283,7 +283,7 @@ public class UtilTest {
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.insert(new ListNode<Integer>(1));
 		list.insert(new ListNode<Integer>(1));
-		list = Util.partition(list, 0, getIntegerComparator());
+		Util.partition(list, 0, getIntegerComparator());
 		assertNotNull(list);
 		//Expecting the head to be null
 		assertNotNull(assertFailTestMsg, list.getHead());
@@ -302,7 +302,7 @@ public class UtilTest {
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.insert(new ListNode<Integer>(1));
 		list.insert(new ListNode<Integer>(1));
-		list = Util.partition(list, 0, getIntegerComparator());
+		Util.partition(list, 0, getIntegerComparator());
 		assertNotNull(list);
 		//Expecting the head to be null
 		assertNotNull(assertFailTestMsg, list.getHead());
@@ -325,7 +325,7 @@ public class UtilTest {
 		list.insert(new ListNode<Integer>(2));
 		list.insert(new ListNode<Integer>(5));
 		list.insert(new ListNode<Integer>(2));
-		list = Util.partition(list, 3, getIntegerComparator());
+		Util.partition(list, 3, getIntegerComparator());
 		assertNotNull(list);
 		//Expecting the head to be null
 		assertNotNull(assertFailTestMsg, list.getHead());
@@ -349,7 +349,7 @@ public class UtilTest {
 		list.insert(new ListNode<Integer>(2));
 		list.insert(new ListNode<Integer>(5));
 		list.insert(new ListNode<Integer>(2));
-		list = Util.partition(list, 3, getIntegerComparator());
+		Util.partition(list, 3, getIntegerComparator());
 		assertNotNull(list);
 		//Expecting the head to be null
 		assertNotNull(assertFailTestMsg, list.getHead());
@@ -374,7 +374,7 @@ public class UtilTest {
 		list.insert(new ListNode<Integer>(2));
 		list.insert(new ListNode<Integer>(5));
 		list.insert(new ListNode<Integer>(2));
-		list = Util.partition(list, 3, getIntegerComparator());
+		Util.partition(list, 3, getIntegerComparator());
 		assertNotNull(list);
 		//Expecting the head to be null
 		assertNotNull(assertFailTestMsg, list.getHead());
@@ -470,5 +470,6 @@ public class UtilTest {
 			}
 		}
 	}
+	
 	
 }
