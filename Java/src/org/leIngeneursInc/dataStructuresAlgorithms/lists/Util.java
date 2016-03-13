@@ -514,4 +514,42 @@ public class Util {
 		return lastNode1;
 	}
 	
+	/**
+	 * Finds the node where a loop starts in the list. If there is any loop in the list
+	 * REturns null otherwise.
+	 * @param head the start of the list
+	 * @return the point where loop starts, null if there is no loop.
+	 */
+	public static<T> ListNode<T> findStartOfLoop(ListNode<T> head){
+		if(head == null){
+			return head;
+		}else{
+			//do nothing here. 
+		}
+		
+		ListNode<T> slowPointer = head;
+		ListNode<T> fastPointer = head.getNext();
+		
+		while(fastPointer != slowPointer && fastPointer != null && fastPointer.getNext() != null){
+			slowPointer = slowPointer.getNext();
+			fastPointer = fastPointer.getNext().getNext();
+		}
+		
+		if(fastPointer == null || fastPointer.getNext() == null){
+			//no loop in the list
+			return null;
+		}else{
+			//do nothing here.
+		}
+		
+		slowPointer = head;
+		fastPointer = fastPointer.getNext();
+		while(slowPointer != fastPointer){
+			slowPointer = slowPointer.getNext();
+			fastPointer = fastPointer.getNext();
+		}
+		
+		return slowPointer;
+	}
+	
 }

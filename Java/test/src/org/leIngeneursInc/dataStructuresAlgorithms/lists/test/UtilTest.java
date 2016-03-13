@@ -104,35 +104,35 @@ public class UtilTest {
 					Util.hasCycle(list));
 		}
 	}
-	
-	@Test 
-	public void test_findStartOfLoop_EmptyList(){
+
+	@Test
+	public void test_findStartOfLoop_EmptyList() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		assertNull("Empty List must return null", Util.findStartOfLoop(list));
 	}
-	
+
 	@Test
-	public void test_findStartOfLoop_AcyclicList(){
+	public void test_findStartOfLoop_AcyclicList() {
 		LinkedList<Integer> list = getIntegerLinkedList(10);
 		assertNull("Acyclic List must return null", Util.findStartOfLoop(list));
 	}
-	
+
 	@Test
-	public void test_findStartOfLoop_CyclicList_FixedSmall(){
+	public void test_findStartOfLoop_CyclicList_FixedSmall() {
 		LinkedList<Integer> list = getIntegerLinkedList(11);
 		// Creating cycle at fifth node
 		ListNode<Integer> lastNode = list.getHead();
-		while(lastNode.getNext() != null){
+		while (lastNode.getNext() != null) {
 			lastNode = lastNode.getNext();
 		}
 		ListNode<Integer> cyclicNode = list.getHead();
-		for(int i = 0 ; i < 3 ; i ++){
+		for (int i = 0; i < 3; i++) {
 			cyclicNode = cyclicNode.getNext();
 		}
 		lastNode.setNext(cyclicNode);
-		assertEquals("Cyclic List of Size 11 with cycle at Node 4" , cyclicNode,  Util.findStartOfLoop(list));
+		assertEquals("Cyclic List of Size 11 with cycle at Node 4", cyclicNode, Util.findStartOfLoop(list));
 	}
-	
+
 	@Test
 	public void test_findStartOfLoop_CyclicList_RandomPlacementListsOfRandomSize() {
 		int NUM_ITERS = 10;
@@ -153,170 +153,168 @@ public class UtilTest {
 				}
 			}
 			list.getLastNode().setNext(nodeForCycle);
-			assertEquals("Cyclic List with last node pointing to node at index : " + (cycleIndex - 1),
-					nodeForCycle, Util.findStartOfLoop(list));
+			assertEquals("Cyclic List with last node pointing to node at index : " + (cycleIndex - 1), nodeForCycle,
+					Util.findStartOfLoop(list));
 		}
 	}
-	
-	
-	
+
 	@Test
-	public void test_swapPairs_EmptyList(){
+	public void test_swapPairs_EmptyList() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list = Util.swapPairs(list);
 		assertNotNull(list);
 		assertTrue("Expecting an empty list after swapParis on an empty list", list.isEmpty());
 	}
-	
+
 	@Test
-	public void test_swapPairs_SingleNode(){
+	public void test_swapPairs_SingleNode() {
 		LinkedList<Integer> list = getIntegerLinkedList(1);
 		list = Util.swapPairs(list);
 		assertNotNull(list);
-		int[] arrExpectedValues = new int[]{1};
+		int[] arrExpectedValues = new int[] { 1 };
 		ListNode<Integer> head = list.getHead();
-		for(int expected : arrExpectedValues){
+		for (int expected : arrExpectedValues) {
 			assertEquals(expected, head.getVal().intValue());
 			head = head.getNext();
 		}
 		assertNull(head);
 	}
-	
+
 	@Test
-	public void test_swapPairs_TwoNodes(){
+	public void test_swapPairs_TwoNodes() {
 		LinkedList<Integer> list = getIntegerLinkedList(2);
 		list = Util.swapPairs(list);
 		assertNotNull(list);
-		int[] arrExpectedValues = new int[]{2,1};
+		int[] arrExpectedValues = new int[] { 2, 1 };
 		ListNode<Integer> head = list.getHead();
-		for(int expected : arrExpectedValues){
+		for (int expected : arrExpectedValues) {
 			assertEquals(expected, head.getVal().intValue());
 			head = head.getNext();
 		}
 		assertNull(head);
 	}
-	
+
 	@Test
-	public void test_swapPairs_ThreeNodes(){
+	public void test_swapPairs_ThreeNodes() {
 		LinkedList<Integer> list = getIntegerLinkedList(3);
 		list = Util.swapPairs(list);
 		assertNotNull(list);
-		int[] arrExpectedValues = new int[]{2,1,3};
+		int[] arrExpectedValues = new int[] { 2, 1, 3 };
 		ListNode<Integer> head = list.getHead();
-		for(int expected : arrExpectedValues){
+		for (int expected : arrExpectedValues) {
 			assertEquals(expected, head.getVal().intValue());
 			head = head.getNext();
 		}
 		assertNull(head);
 	}
-	
+
 	@Test
-	public void test_swapPairs_FourNodes(){
+	public void test_swapPairs_FourNodes() {
 		LinkedList<Integer> list = getIntegerLinkedList(4);
 		list = Util.swapPairs(list);
 		assertNotNull(list);
-		int[] arrExpectedValues = new int[]{2,1, 4, 3};
+		int[] arrExpectedValues = new int[] { 2, 1, 4, 3 };
 		ListNode<Integer> head = list.getHead();
-		for(int expected : arrExpectedValues){
+		for (int expected : arrExpectedValues) {
 			assertEquals(expected, head.getVal().intValue());
 			head = head.getNext();
 		}
 		assertNull(head);
 	}
-	
+
 	@Test
-	public void test_swapPairs_ListOf10Nodes(){
+	public void test_swapPairs_ListOf10Nodes() {
 		LinkedList<Integer> list = getIntegerLinkedList(10);
 		list = Util.swapPairs(list);
 		assertNotNull(list);
-		int[] arrExpectedValues = new int[]{2,1, 4,3, 6,5, 8, 7, 10, 9};
+		int[] arrExpectedValues = new int[] { 2, 1, 4, 3, 6, 5, 8, 7, 10, 9 };
 		ListNode<Integer> head = list.getHead();
-		for(int expected : arrExpectedValues){
+		for (int expected : arrExpectedValues) {
 			assertNotNull(head);
 			assertEquals(expected, head.getVal().intValue());
 			head = head.getNext();
 		}
 		assertNull(head);
 	}
-	
-	private static final Comparator<Integer> getIntegerComparator(){
+
+	private static final Comparator<Integer> getIntegerComparator() {
 		return new Comparator<Integer>() {
 
 			@Override
 			public int compare(Integer o1, Integer o2) {
-				if(o1.intValue() > o2.intValue()){
+				if (o1.intValue() > o2.intValue()) {
 					return 1;
-				} else if ( o1.intValue() == o2.intValue()){
+				} else if (o1.intValue() == o2.intValue()) {
 					return 0;
-				} else{
+				} else {
 					return -1;
 				}
 			}
 		};
 	}
-	
+
 	@Test
-	public void test_partition_EmptyList(){
+	public void test_partition_EmptyList() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		Util.partition(list, 0, getIntegerComparator());
 		assertNotNull(list);
-		//Expecting the head to be null
+		// Expecting the head to be null
 		assertNull(list.getHead());
 		assertTrue(list.isEmpty());
 	}
 
 	@Test
-	public void test_partition_SingleNode(){
+	public void test_partition_SingleNode() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.insert(new ListNode<Integer>(1));
 		Util.partition(list, 0, getIntegerComparator());
 		assertNotNull(list);
-		//Expecting the head to be null
+		// Expecting the head to be null
 		assertNotNull(list.getHead());
 		assertNull(list.getHead().getNext());
 		assertEquals(1, list.getHead().getVal().intValue());
 	}
-	
+
 	@Test
-	public void test_partition_CornerCase1(){
+	public void test_partition_CornerCase1() {
 		String assertFailTestMsg = "Fails for Input : list = [1,1] ; val = 0";
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.insert(new ListNode<Integer>(1));
 		list.insert(new ListNode<Integer>(1));
 		Util.partition(list, 0, getIntegerComparator());
 		assertNotNull(list);
-		//Expecting the head to be null
+		// Expecting the head to be null
 		assertNotNull(assertFailTestMsg, list.getHead());
-		int[] arr = new int[]{1,1};
+		int[] arr = new int[] { 1, 1 };
 		ListNode<Integer> trav = list.getHead();
-		for(int i : arr){
+		for (int i : arr) {
 			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
 			trav = trav.getNext();
 		}
 		assertNull(assertFailTestMsg, trav);
 	}
-	
+
 	@Test
-	public void test_partition_CornerCase2(){
+	public void test_partition_CornerCase2() {
 		String assertFailTestMsg = "Fails for Input : list = [1,1] ; val = 2";
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.insert(new ListNode<Integer>(1));
 		list.insert(new ListNode<Integer>(1));
 		Util.partition(list, 0, getIntegerComparator());
 		assertNotNull(list);
-		//Expecting the head to be null
+		// Expecting the head to be null
 		assertNotNull(assertFailTestMsg, list.getHead());
-		int[] arr = new int[]{1,1};
+		int[] arr = new int[] { 1, 1 };
 		ListNode<Integer> trav = list.getHead();
-		for(int i : arr){
+		for (int i : arr) {
 			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
 			trav = trav.getNext();
 		}
 		assertNull(assertFailTestMsg, trav);
 	}
-	
+
 	@Test
-	public void test_partition_Case1(){
+	public void test_partition_Case1() {
 		String assertFailTestMsg = "Fails for Input : list = [1,4,3,2,5,2] ; val = 3";
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.insert(new ListNode<Integer>(1));
@@ -327,19 +325,19 @@ public class UtilTest {
 		list.insert(new ListNode<Integer>(2));
 		Util.partition(list, 3, getIntegerComparator());
 		assertNotNull(list);
-		//Expecting the head to be null
+		// Expecting the head to be null
 		assertNotNull(assertFailTestMsg, list.getHead());
-		int[] arr = new int[]{1,2,2,4,3,5};
+		int[] arr = new int[] { 1, 2, 2, 4, 3, 5 };
 		ListNode<Integer> trav = list.getHead();
-		for(int i : arr){
+		for (int i : arr) {
 			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
 			trav = trav.getNext();
 		}
 		assertNull(assertFailTestMsg, trav);
 	}
-	
+
 	@Test
-	public void test_partition_Case2(){
+	public void test_partition_Case2() {
 		String assertFailTestMsg = "Fails for Input : list = [4,1,4,3,2,5,2] ; val = 3";
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.insert(new ListNode<Integer>(4));
@@ -351,19 +349,19 @@ public class UtilTest {
 		list.insert(new ListNode<Integer>(2));
 		Util.partition(list, 3, getIntegerComparator());
 		assertNotNull(list);
-		//Expecting the head to be null
+		// Expecting the head to be null
 		assertNotNull(assertFailTestMsg, list.getHead());
-		int[] arr = new int[]{1,2,2,4,4,3,5};
+		int[] arr = new int[] { 1, 2, 2, 4, 4, 3, 5 };
 		ListNode<Integer> trav = list.getHead();
-		for(int i : arr){
+		for (int i : arr) {
 			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
 			trav = trav.getNext();
 		}
 		assertNull(assertFailTestMsg, trav);
 	}
-	
+
 	@Test
-	public void test_partition_Case3(){
+	public void test_partition_Case3() {
 		String assertFailTestMsg = "Fails for Input : list = [4,1,4,3,-1,2,5,2] ; val = 3";
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.insert(new ListNode<Integer>(4));
@@ -376,49 +374,49 @@ public class UtilTest {
 		list.insert(new ListNode<Integer>(2));
 		Util.partition(list, 3, getIntegerComparator());
 		assertNotNull(list);
-		//Expecting the head to be null
+		// Expecting the head to be null
 		assertNotNull(assertFailTestMsg, list.getHead());
-		int[] arr = new int[]{1,-1,2,2,4,4,3,5};
+		int[] arr = new int[] { 1, -1, 2, 2, 4, 4, 3, 5 };
 		ListNode<Integer> trav = list.getHead();
-		for(int i : arr){
+		for (int i : arr) {
 			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
 			trav = trav.getNext();
 		}
 		assertNull(assertFailTestMsg, trav);
 	}
-	
+
 	@Test
-	public void test_reverse_NullList(){
-		try{
+	public void test_reverse_NullList() {
+		try {
 			Util.reverse(null);
-		}catch(Exception exc){
-			assertTrue("Exception occured : " +exc.getMessage() , false);
+		} catch (Exception exc) {
+			assertTrue("Exception occured : " + exc.getMessage(), false);
 		}
 	}
-	
+
 	@Test
-	public void test_reverse_EmptyList(){
-		try{
+	public void test_reverse_EmptyList() {
+		try {
 			Util.reverse(new LinkedList<Integer>());
-		}catch(Exception exc){
-			assertTrue("Exception occured : " +exc.getMessage() , false);
+		} catch (Exception exc) {
+			assertTrue("Exception occured : " + exc.getMessage(), false);
 		}
 	}
-	
+
 	@Test
-	public void test_reverse_SmallList(){
-		int size= 10;
+	public void test_reverse_SmallList() {
+		int size = 10;
 		LinkedList<Integer> list = getIntegerLinkedList(size);
 		Util.reverse(list);
 		ListNode<Integer> start = list.getHead();
-		while(start != null){
+		while (start != null) {
 			assertEquals("Value of node in reversed list does not match", size--, start.getVal().intValue());
 			start = start.getNext();
 		}
 	}
-	
+
 	@Test
-	public void test_reverse_RandomListsLarge(){
+	public void test_reverse_RandomListsLarge() {
 		int NUM_ITERS = 100;
 		int MAX_SIZE = 500;
 		LinkedList<Integer> list = new LinkedList<Integer>();
@@ -428,52 +426,51 @@ public class UtilTest {
 			list = getIntegerLinkedList(size);
 			Util.reverse(list);
 			ListNode<Integer> start = list.getHead();
-			while(start != null){
+			while (start != null) {
 				assertEquals("Value of node in reversed list does not match", size--, start.getVal().intValue());
 				start = start.getNext();
 			}
 		}
 	}
-	
+
 	@Test
-	public void test_findNode(){
+	public void test_findNode() {
 		final int NUM_ITERS = 100;
 		final int MAX_SIZE = 500;
 		LinkedList<Integer> list = new LinkedList<Integer>();
-		//Randomly Generate this list with unique numbers and 
+		// Randomly Generate this list with unique numbers and
 		// try to find out some that exist and some that don't
 		final int MAX_RANGE = MAX_SIZE * NUM_ITERS;
 		Random rndm = new Random();
 		Set<Integer> setVals = new LinkedHashSet<Integer>();
-		for(int index = 0; index < MAX_SIZE; index++){
+		for (int index = 0; index < MAX_SIZE; index++) {
 			int val = -1;
-			do{
+			do {
 				val = rndm.nextInt(MAX_RANGE);
-			}while(setVals.contains(val));
+			} while (setVals.contains(val));
 			setVals.add(val);
 			list.insert(new ListNode<Integer>(val));
 		}
 		Integer[] arrVals = setVals.toArray(new Integer[setVals.size()]);
-		for(int iter = 0; iter < NUM_ITERS; iter++){
-			int randIndex=  rndm.nextInt(arrVals.length);
-			ListNode<Integer> node = Util.findNode( arrVals[randIndex], list.getHead());
+		for (int iter = 0; iter < NUM_ITERS; iter++) {
+			int randIndex = rndm.nextInt(arrVals.length);
+			ListNode<Integer> node = Util.findNode(arrVals[randIndex], list.getHead());
 			assertNotNull(node);
 			assertEquals(arrVals[randIndex], node.getVal());
 		}
-		
-		for(int iter = 0; iter < MAX_SIZE + 100; iter++){
-			if(setVals.contains(iter)){
+
+		for (int iter = 0; iter < MAX_SIZE + 100; iter++) {
+			if (setVals.contains(iter)) {
 				continue;
-			}else{
-				ListNode<Integer> node = Util.findNode( iter, list.getHead());
+			} else {
+				ListNode<Integer> node = Util.findNode(iter, list.getHead());
 				assertNull(node);
 			}
 		}
 	}
-	
-	
+
 	@Test
-	public void test_PartitionSeparately_Case1(){
+	public void test_PartitionSeparately_Case1() {
 		String assertFailTestMsg = "Fails for Input : list = [1,4,3,2,5,2] ; val = 3";
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.insert(new ListNode<Integer>(1));
@@ -484,19 +481,19 @@ public class UtilTest {
 		list.insert(new ListNode<Integer>(2));
 		Util.partitionSeparately(list, 3, getIntegerComparator());
 		assertNotNull(list);
-		//Expecting the head to be null
+		// Expecting the head to be null
 		assertNotNull(assertFailTestMsg, list.getHead());
-		int[] arr = new int[]{1,2,2,3,4,5};
+		int[] arr = new int[] { 1, 2, 2, 3, 4, 5 };
 		ListNode<Integer> trav = list.getHead();
-		for(int i : arr){
+		for (int i : arr) {
 			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
 			trav = trav.getNext();
 		}
 		assertNull(assertFailTestMsg, trav);
 	}
-	
+
 	@Test
-	public void test_PartitionSeparately_Case2(){
+	public void test_PartitionSeparately_Case2() {
 		String assertFailTestMsg = "Fails for Input : list = [1,4,3,2,5,2] ; val = 0";
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.insert(new ListNode<Integer>(1));
@@ -507,19 +504,19 @@ public class UtilTest {
 		list.insert(new ListNode<Integer>(2));
 		Util.partitionSeparately(list, 0, getIntegerComparator());
 		assertNotNull(list);
-		//Expecting the head to be null
+		// Expecting the head to be null
 		assertNotNull(assertFailTestMsg, list.getHead());
-		int[] arr = new int[]{1,4,3,2,5,2};
+		int[] arr = new int[] { 1, 4, 3, 2, 5, 2 };
 		ListNode<Integer> trav = list.getHead();
-		for(int i : arr){
+		for (int i : arr) {
 			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
 			trav = trav.getNext();
 		}
 		assertNull(assertFailTestMsg, trav);
 	}
-	
+
 	@Test
-	public void test_PartitionSeparately_Case3(){
+	public void test_PartitionSeparately_Case3() {
 		String assertFailTestMsg = "Fails for Input : list = [1,4,3,2,5,2] ; val = 7";
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.insert(new ListNode<Integer>(1));
@@ -530,19 +527,19 @@ public class UtilTest {
 		list.insert(new ListNode<Integer>(2));
 		Util.partitionSeparately(list, 0, getIntegerComparator());
 		assertNotNull(list);
-		//Expecting the head to be null
+		// Expecting the head to be null
 		assertNotNull(assertFailTestMsg, list.getHead());
-		int[] arr = new int[]{1,4,3,2,5,2};
+		int[] arr = new int[] { 1, 4, 3, 2, 5, 2 };
 		ListNode<Integer> trav = list.getHead();
-		for(int i : arr){
+		for (int i : arr) {
 			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
 			trav = trav.getNext();
 		}
 		assertNull(assertFailTestMsg, trav);
 	}
-	
+
 	@Test
-	public void test_PartitionSeparately_Case4(){
+	public void test_PartitionSeparately_Case4() {
 		String assertFailTestMsg = "Fails for Input : list = [1,1,1,1,1,1] ; val = 1";
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.insert(new ListNode<Integer>(1));
@@ -553,19 +550,19 @@ public class UtilTest {
 		list.insert(new ListNode<Integer>(1));
 		Util.partitionSeparately(list, 1, getIntegerComparator());
 		assertNotNull(list);
-		//Expecting the head to be null
+		// Expecting the head to be null
 		assertNotNull(assertFailTestMsg, list.getHead());
-		int[] arr = new int[]{1,1,1,1,1,1};
+		int[] arr = new int[] { 1, 1, 1, 1, 1, 1 };
 		ListNode<Integer> trav = list.getHead();
-		for(int i : arr){
+		for (int i : arr) {
 			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
 			trav = trav.getNext();
 		}
 		assertNull(assertFailTestMsg, trav);
 	}
-	
+
 	@Test
-	public void test_PointOfIntersection_Case1_IntersectingSameLength(){
+	public void test_PointOfIntersection_Case1_IntersectingSameLength() {
 		String assertFailMsg = "Fails for Input : [1,2,3,4,5,6] & [8,9,3,4,5,6]. Point of Int : 3";
 		LinkedList<Integer> list1 = new LinkedList<Integer>();
 		LinkedList<Integer> list2 = new LinkedList<Integer>();
@@ -579,18 +576,18 @@ public class UtilTest {
 		list1.insert(new ListNode<Integer>(1));
 		list1.insert(new ListNode<Integer>(2));
 		list1.insert(commonListHead);
-		
+
 		list2.insert(new ListNode<Integer>(8));
 		list2.insert(new ListNode<Integer>(9));
 		list2.insert(commonListHead);
-		
+
 		ListNode<Integer> intPt = Util.pointOfIntersection(list1.getHead(), list2.getHead());
 		assertNotNull(assertFailMsg, intPt);
 		assertEquals(assertFailMsg, commonListHead, intPt);
 	}
-	
+
 	@Test
-	public void test_PointOfIntersection_Case1_IntersectingDifferentLength(){
+	public void test_PointOfIntersection_Case1_IntersectingDifferentLength() {
 		String assertFailMsg = "Fails for Input : [1,2,3,4,5,6] & [11, 10,8,9,3,4,5,6]. Point of Int : 3";
 		LinkedList<Integer> list1 = new LinkedList<Integer>();
 		LinkedList<Integer> list2 = new LinkedList<Integer>();
@@ -609,15 +606,14 @@ public class UtilTest {
 		list2.insert(new ListNode<Integer>(8));
 		list2.insert(new ListNode<Integer>(9));
 		list2.insert(commonListHead);
-		
+
 		ListNode<Integer> intPt = Util.pointOfIntersection(list1.getHead(), list2.getHead());
 		assertNotNull(assertFailMsg, intPt);
 		assertEquals(assertFailMsg, commonListHead, intPt);
 	}
-	
-	
+
 	@Test
-	public void test_PointOfIntersection_Case1_NonIntersecting(){
+	public void test_PointOfIntersection_Case1_NonIntersecting() {
 		String assertFailMsg = "Fails for Input : [1,2] & [11, 10,8,9]. Point of Int : 3";
 		LinkedList<Integer> list1 = new LinkedList<Integer>();
 		LinkedList<Integer> list2 = new LinkedList<Integer>();
@@ -627,8 +623,34 @@ public class UtilTest {
 		list2.insert(new ListNode<Integer>(10));
 		list2.insert(new ListNode<Integer>(8));
 		list2.insert(new ListNode<Integer>(9));
-		
+
 		ListNode<Integer> intPt = Util.pointOfIntersection(list1.getHead(), list2.getHead());
 		assertNull(assertFailMsg, intPt);
+	}
+
+	@Test
+	public void test_FindStartOfLoop_Case1() {
+		String assertFailMsg = "List with loop random placement of cycle start";
+		// Generating a linked list with cycle
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		ListNode<Integer> nodeForCycle = null;
+		int size = 10;
+		// Adding 1 to index because i starts with 1
+		int cycleIndex = (int) (Math.random() * size) + 1;
+		for (int i = 1; i <= size; i++) {
+			if (i == cycleIndex) {
+				nodeForCycle = new ListNode<Integer>(i);
+				list.insert(nodeForCycle);
+			} else {
+				list.insert(new ListNode<Integer>(i));
+			}
+		}
+		list.getLastNode().setNext(nodeForCycle);
+		ListNode<Integer> loopStart = Util.findStartOfLoop(list.getHead());
+		System.out.println("Loop Start : " +loopStart);
+		System.out.println("Node for Cycle : " +nodeForCycle);
+		assertNotNull(loopStart);
+		assertTrue(assertFailMsg, loopStart == nodeForCycle);
+		
 	}
 }
