@@ -472,4 +472,163 @@ public class UtilTest {
 	}
 	
 	
+	@Test
+	public void test_PartitionSeparately_Case1(){
+		String assertFailTestMsg = "Fails for Input : list = [1,4,3,2,5,2] ; val = 3";
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.insert(new ListNode<Integer>(1));
+		list.insert(new ListNode<Integer>(4));
+		list.insert(new ListNode<Integer>(3));
+		list.insert(new ListNode<Integer>(2));
+		list.insert(new ListNode<Integer>(5));
+		list.insert(new ListNode<Integer>(2));
+		Util.partitionSeparately(list, 3, getIntegerComparator());
+		assertNotNull(list);
+		//Expecting the head to be null
+		assertNotNull(assertFailTestMsg, list.getHead());
+		int[] arr = new int[]{1,2,2,3,4,5};
+		ListNode<Integer> trav = list.getHead();
+		for(int i : arr){
+			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
+			trav = trav.getNext();
+		}
+		assertNull(assertFailTestMsg, trav);
+	}
+	
+	@Test
+	public void test_PartitionSeparately_Case2(){
+		String assertFailTestMsg = "Fails for Input : list = [1,4,3,2,5,2] ; val = 0";
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.insert(new ListNode<Integer>(1));
+		list.insert(new ListNode<Integer>(4));
+		list.insert(new ListNode<Integer>(3));
+		list.insert(new ListNode<Integer>(2));
+		list.insert(new ListNode<Integer>(5));
+		list.insert(new ListNode<Integer>(2));
+		Util.partitionSeparately(list, 0, getIntegerComparator());
+		assertNotNull(list);
+		//Expecting the head to be null
+		assertNotNull(assertFailTestMsg, list.getHead());
+		int[] arr = new int[]{1,4,3,2,5,2};
+		ListNode<Integer> trav = list.getHead();
+		for(int i : arr){
+			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
+			trav = trav.getNext();
+		}
+		assertNull(assertFailTestMsg, trav);
+	}
+	
+	@Test
+	public void test_PartitionSeparately_Case3(){
+		String assertFailTestMsg = "Fails for Input : list = [1,4,3,2,5,2] ; val = 7";
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.insert(new ListNode<Integer>(1));
+		list.insert(new ListNode<Integer>(4));
+		list.insert(new ListNode<Integer>(3));
+		list.insert(new ListNode<Integer>(2));
+		list.insert(new ListNode<Integer>(5));
+		list.insert(new ListNode<Integer>(2));
+		Util.partitionSeparately(list, 0, getIntegerComparator());
+		assertNotNull(list);
+		//Expecting the head to be null
+		assertNotNull(assertFailTestMsg, list.getHead());
+		int[] arr = new int[]{1,4,3,2,5,2};
+		ListNode<Integer> trav = list.getHead();
+		for(int i : arr){
+			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
+			trav = trav.getNext();
+		}
+		assertNull(assertFailTestMsg, trav);
+	}
+	
+	@Test
+	public void test_PartitionSeparately_Case4(){
+		String assertFailTestMsg = "Fails for Input : list = [1,1,1,1,1,1] ; val = 1";
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.insert(new ListNode<Integer>(1));
+		list.insert(new ListNode<Integer>(1));
+		list.insert(new ListNode<Integer>(1));
+		list.insert(new ListNode<Integer>(1));
+		list.insert(new ListNode<Integer>(1));
+		list.insert(new ListNode<Integer>(1));
+		Util.partitionSeparately(list, 1, getIntegerComparator());
+		assertNotNull(list);
+		//Expecting the head to be null
+		assertNotNull(assertFailTestMsg, list.getHead());
+		int[] arr = new int[]{1,1,1,1,1,1};
+		ListNode<Integer> trav = list.getHead();
+		for(int i : arr){
+			assertEquals(assertFailTestMsg, i, trav.getVal().intValue());
+			trav = trav.getNext();
+		}
+		assertNull(assertFailTestMsg, trav);
+	}
+	
+	@Test
+	public void test_PointOfIntersection_Case1_IntersectingSameLength(){
+		String assertFailMsg = "Fails for Input : [1,2,3,4,5,6] & [8,9,3,4,5,6]. Point of Int : 3";
+		LinkedList<Integer> list1 = new LinkedList<Integer>();
+		LinkedList<Integer> list2 = new LinkedList<Integer>();
+		ListNode<Integer> commonListHead = new ListNode<Integer>(3);
+		commonListHead.setNext(new ListNode<Integer>(4));
+		commonListHead = commonListHead.getNext();
+		commonListHead.setNext(new ListNode<Integer>(5));
+		commonListHead = commonListHead.getNext();
+		commonListHead.setNext(new ListNode<Integer>(6));
+		commonListHead = commonListHead.getNext();
+		list1.insert(new ListNode<Integer>(1));
+		list1.insert(new ListNode<Integer>(2));
+		list1.insert(commonListHead);
+		
+		list2.insert(new ListNode<Integer>(8));
+		list2.insert(new ListNode<Integer>(9));
+		list2.insert(commonListHead);
+		
+		ListNode<Integer> intPt = Util.pointOfIntersection(list1.getHead(), list2.getHead());
+		assertNotNull(assertFailMsg, intPt);
+		assertEquals(assertFailMsg, commonListHead, intPt);
+	}
+	
+	@Test
+	public void test_PointOfIntersection_Case1_IntersectingDifferentLength(){
+		String assertFailMsg = "Fails for Input : [1,2,3,4,5,6] & [11, 10,8,9,3,4,5,6]. Point of Int : 3";
+		LinkedList<Integer> list1 = new LinkedList<Integer>();
+		LinkedList<Integer> list2 = new LinkedList<Integer>();
+		ListNode<Integer> commonListHead = new ListNode<Integer>(3);
+		commonListHead.setNext(new ListNode<Integer>(4));
+		commonListHead = commonListHead.getNext();
+		commonListHead.setNext(new ListNode<Integer>(5));
+		commonListHead = commonListHead.getNext();
+		commonListHead.setNext(new ListNode<Integer>(6));
+		commonListHead = commonListHead.getNext();
+		list1.insert(new ListNode<Integer>(1));
+		list1.insert(new ListNode<Integer>(2));
+		list1.insert(commonListHead);
+		list2.insert(new ListNode<Integer>(11));
+		list2.insert(new ListNode<Integer>(10));
+		list2.insert(new ListNode<Integer>(8));
+		list2.insert(new ListNode<Integer>(9));
+		list2.insert(commonListHead);
+		
+		ListNode<Integer> intPt = Util.pointOfIntersection(list1.getHead(), list2.getHead());
+		assertNotNull(assertFailMsg, intPt);
+		assertEquals(assertFailMsg, commonListHead, intPt);
+	}
+	
+	
+	@Test
+	public void test_PointOfIntersection_Case1_NonIntersecting(){
+		String assertFailMsg = "Fails for Input : [1,2] & [11, 10,8,9]. Point of Int : 3";
+		LinkedList<Integer> list1 = new LinkedList<Integer>();
+		LinkedList<Integer> list2 = new LinkedList<Integer>();
+		list1.insert(new ListNode<Integer>(1));
+		list1.insert(new ListNode<Integer>(2));
+		list2.insert(new ListNode<Integer>(11));
+		list2.insert(new ListNode<Integer>(10));
+		list2.insert(new ListNode<Integer>(8));
+		list2.insert(new ListNode<Integer>(9));
+		
+		ListNode<Integer> intPt = Util.pointOfIntersection(list1.getHead(), list2.getHead());
+		assertNull(assertFailMsg, intPt);
+	}
 }

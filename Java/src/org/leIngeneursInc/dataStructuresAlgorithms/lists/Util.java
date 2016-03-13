@@ -455,4 +455,63 @@ public class Util {
 		
 	}
 	
+	/**
+	 * Checks if the two lists intersect and return the point of intersection of the lists, if it exists 
+	 * and null otherwise.
+	 * Time Complexity : O(|L1| + |L2|)
+	 * Space Complexity : O(1)
+	 * @param head1 starting node of first list
+	 * @param head2 starting node of second list
+	 * @return the point of intersection if it exists and null otherwise.
+	 */
+	public static<T> ListNode<T> pointOfIntersection(ListNode<T> head1, ListNode<T> head2){
+		if(head1 == null || head2 == null){
+			return null;
+		}else{
+			//do nothing here.
+		}
+		
+		ListNode<T> lastNode1 = head1;
+		int len1 = 1;
+		while(lastNode1.getNext() != null){
+			len1++;
+			lastNode1 = lastNode1.getNext();
+		}
+		ListNode<T> lastNode2 = head2;
+		int len2 = 1;
+		while(lastNode2.getNext() != null){
+			len2++;
+			lastNode2 = lastNode2.getNext();
+		}
+		
+		if(lastNode1 != lastNode2){
+			//Case : where there is no intersection
+			return null;
+		}else{
+			//do nothing here. go ahead
+		}
+		
+		lastNode1 = head1;
+		lastNode2 = head2;
+		
+		if(len1 > len2){
+			for(int iter = 0; iter < (len1 - len2); iter++){
+				lastNode1 = lastNode1.getNext();
+			}
+		}else if(len2 > len1){
+			for(int iter = 0; iter < (len2 - len1); iter++){
+				lastNode2 = lastNode2.getNext();
+			}
+		} else{
+			//nboth the pointers need to be at the start
+		}
+		
+		while(lastNode1 != lastNode2){
+			lastNode1 = lastNode1.getNext();
+			lastNode2 = lastNode2.getNext();
+		}
+		
+		return lastNode1;
+	}
+	
 }
