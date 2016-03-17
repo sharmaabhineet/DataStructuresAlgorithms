@@ -8,6 +8,7 @@ import org.leIngeneursInc.dataStructuresAlgorithms.lists.test.LinkedListTest;
 import org.leIngeneursInc.dataStructuresAlgorithms.lists.test.UtilTest;
 import org.leIngeneursInc.dataStructuresAlgorithms.sorting.test.SortTest;
 import org.leIngeneursInc.dataStructuresAlgorithms.trees.test.BinarySearchTreeTest;
+import org.leIngeneursInc.dataStructuresAlgorithms.trees.test.MinHeapTest;
 import org.leIngeneursInc.dataStructuresAlgorithms.trees.test.TreeUtilTest;
 
 
@@ -24,7 +25,8 @@ import org.leIngeneursInc.dataStructuresAlgorithms.trees.test.TreeUtilTest;
    TreeUtilTest.class,
    HashTablesTest.class,
    StringBuilderTest.class,
-   SortTest.class
+   SortTest.class,
+   MinHeapTest.class
 })
 public class RunAllUnitTests {   
 }  	
