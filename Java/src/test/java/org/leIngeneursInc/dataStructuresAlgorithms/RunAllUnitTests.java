@@ -11,22 +11,24 @@ import org.leIngeneursInc.dataStructuresAlgorithms.sorting.SortTest;
 import org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest;
 import org.leIngeneursInc.dataStructuresAlgorithms.trees.MinHeapTest;
 import org.leIngeneursInc.dataStructuresAlgorithms.trees.TreeUtilTest;
+import org.leIngeneursInc.dataStructuresAlgorithms.unionFind.QuickFindTest;
 
 /**
- * 
  * Runs all the Unit tests
+ *
  * @author abhineet ( sharma.abhineet31@gmail.com )
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-   LinkedListTest.class,
-   UtilTest.class,
-   BinarySearchTreeTest.class,
-   TreeUtilTest.class,
-   HashTablesTest.class,
-   StringBuilderTest.class,
-   SortTest.class,
-   MinHeapTest.class
+        LinkedListTest.class,
+        UtilTest.class,
+        BinarySearchTreeTest.class,
+        TreeUtilTest.class,
+        HashTablesTest.class,
+        StringBuilderTest.class,
+        SortTest.class,
+        MinHeapTest.class,
+        QuickFindTest.class
 })
-public class RunAllUnitTests {   
+public class RunAllUnitTests {
 }  	
