@@ -50,7 +50,7 @@ public class QuickFindTest {
     @Test
     public void testUnionConnectedFind_NonDeterministicInput_Tractable() {
         int size = RANDOM.nextInt(10) + 5; // min : 5 max : 15
-        System.out.println("SIZE : " +size);
+        System.out.println("SIZE : " + size);
         Set<Integer> values = IntStream.range(1, size + 1).boxed().
                 collect(Collectors.toSet());
         QuickFind<Integer> qf = new QuickFind<>(values);
@@ -66,7 +66,7 @@ public class QuickFindTest {
         for (int compIdx = 0; compIdx < numComp; compIdx++) {
             int maxPossibleSize = lstValues.size() / (numComp - compIdx);
             int compSize = -1;
-            if(compIdx == numComp - 1){
+            if (compIdx == numComp - 1) {
                 compSize = maxPossibleSize;
             } else {
                 compSize = RANDOM.nextInt(maxPossibleSize) + 1;
@@ -76,8 +76,8 @@ public class QuickFindTest {
                 int randIdx = RANDOM.nextInt(lstValues.size());
                 components[compIdx][numIdx] = lstValues.get(randIdx);
                 lstValues.remove(randIdx);
-                if(numIdx > 0) {
-                    qf.union(components[compIdx][0] , components[compIdx][numIdx]);
+                if (numIdx > 0) {
+                    qf.union(components[compIdx][0], components[compIdx][numIdx]);
                 }
             }
         }

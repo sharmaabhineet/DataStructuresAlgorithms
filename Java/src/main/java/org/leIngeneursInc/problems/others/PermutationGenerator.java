@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.leIngeneursInc.problems.Others;
+package org.leIngeneursInc.problems.others;
 
 import java.util.ArrayList;
 import java.util.Collections;
