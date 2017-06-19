@@ -30,15 +30,23 @@ public class BSTToDLL {
         }
 
         Node headOfLeft = toDLL(root.left);
-        // Linking the left DLL to the root
-        root.left = headOfLeft.left;
-        headOfLeft.left.right = root;
-        //Linking the right DLL to the root
-        root.right = toDLL(root.right);
+        Node headOfRight = toDLL(root.right);
 
-        headOfLeft.left = root.right.left.right;
-        root.right.left.right = headOfLeft;
-        return headOfLeft;
+        root.left = headOfLeft == null ? headOfRight.left : headOfLeft.left;
+        root.right = headOfRight == null ? headOfLeft : headOfRight;
+
+        if (headOfLeft != null) {
+            headOfLeft.left.right = root;
+            headOfLeft.left = headOfRight == null ? root : headOfRight.left;
+
+        }
+
+        if (headOfRight != null) {
+            headOfRight.left.right = headOfLeft == null ? root : headOfLeft;
+            headOfRight.left = root;
+        }
+
+        return headOfLeft == null ? root : headOfLeft;
     }
 
     public static void main(String[] args) {
@@ -63,6 +71,21 @@ public class BSTToDLL {
             root.right = new Node(7);
             root.right.left = new Node(6);
             root.right.right = new Node(8);
+            printCircularDLL(toDLL(root));
+        }
+
+        // random BST : [10,2,1,5,3,7,8,9] in same order
+        {
+            Node root = new Node(10);
+            root.left = new Node(2);
+            root.left.left = new Node(1);
+            root.left.right = new Node(5);
+
+            root.left.right.left = new Node(3);
+            root.left.right.right = new Node(7);
+
+            root.left.right.right.right = new Node(8);
+            root.left.right.right.right.right = new Node(9);
             printCircularDLL(toDLL(root));
         }
     }
