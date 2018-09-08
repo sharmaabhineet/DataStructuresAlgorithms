@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="17" failures="0" name="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" time="0.352" errors="0" skipped="0">
+<testsuite tests="17" failures="0" name="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" time="0.373" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="10.0.2+13-Ubuntu-1ubuntu0.18.04.1"/>
@@ -62,21 +62,21 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_successorPredecessor_RandomBST_MultiIter" time="0.005"/>
-  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_isValidBST_InValidBST" time="0.001"/>
+  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_successorPredecessor_RandomBST_MultiIter" time="0.007"/>
+  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_isValidBST_InValidBST" time="0"/>
   <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_isValidBST_TreeWithSingleNode" time="0"/>
   <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_find_AllCases_RootWithSingleNode" time="0"/>
   <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_isValidBST_SimpleTree" time="0.001"/>
   <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_findMax_SimpleBST" time="0"/>
-  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_find_AllCases_SimpleBST" time="0"/>
+  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_find_AllCases_SimpleBST" time="0.001"/>
   <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_findMax_SingleNode" time="0"/>
-  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_findMax_RandomBST" time="0"/>
+  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_findMax_RandomBST" time="0.003"/>
   <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="testIsEmpty_NonEmptyTree" time="0"/>
   <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_findMin_SingleNode" time="0"/>
   <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_findMin_SimpleBST" time="0"/>
-  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_find_AllCases_RandomBST" time="0.029"/>
-  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="testIsEmpty_EmptyTree" time="0.003"/>
+  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_find_AllCases_RandomBST" time="0.039"/>
+  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="testIsEmpty_EmptyTree" time="0.001"/>
   <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_isValidBST_RandomSet" time="0.001"/>
-  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_Delete_RandomBST" time="0.307"/>
-  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_findMin_RandomBST" time="0.005"/>
+  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_Delete_RandomBST" time="0.317"/>
+  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.trees.BinarySearchTreeTest" name="test_findMin_RandomBST" time="0.003"/>
 </testsuite>

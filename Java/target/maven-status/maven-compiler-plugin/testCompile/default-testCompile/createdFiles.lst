@@ -3,6 +3,7 @@ org/leIngeneursInc/dataStructuresAlgorithms/unionFind/QuickFindTest.class
 org/leIngeneursInc/dataStructuresAlgorithms/RunAllUnitTests.class
 org/leIngeneursInc/problems/others/subtractLastFromListProblem/ListUtilTest.class
 org/leIngeneursInc/dataStructuresAlgorithms/trees/TreeUtilTest$1.class
+org/leIngeneursInc/problems/others/StableMarriageProblemTest.class
 org/leIngeneursInc/dataStructuresAlgorithms/ctci/arraysAndStrings/RotateMatrixBy90Test.class
 org/leIngeneursInc/dataStructuresAlgorithms/lists/LinkedListTest.class
 org/leIngeneursInc/dataStructuresAlgorithms/sorting/SortTest.class

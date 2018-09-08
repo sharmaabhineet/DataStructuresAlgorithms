@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="org.leIngeneursInc.problems.others.subtractLastFromListProblem.FunctionApplierOnFirstFromLastTest" time="0.022" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="org.leIngeneursInc.problems.others.subtractLastFromListProblem.FunctionApplierOnFirstFromLastTest" time="0.026" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="10.0.2+13-Ubuntu-1ubuntu0.18.04.1"/>
@@ -62,10 +62,10 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.FunctionApplierOnFirstFromLastTest" name="apply_nullList_noException" time="0.008"/>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.FunctionApplierOnFirstFromLastTest" name="apply_listOf5_validValues" time="0.01"/>
+  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.FunctionApplierOnFirstFromLastTest" name="apply_nullList_noException" time="0.005"/>
+  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.FunctionApplierOnFirstFromLastTest" name="apply_listOf5_validValues" time="0.016"/>
   <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.FunctionApplierOnFirstFromLastTest" name="apply_listOf4_validValues" time="0.001"/>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.FunctionApplierOnFirstFromLastTest" name="apply_listOf3_validValues" time="0"/>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.FunctionApplierOnFirstFromLastTest" name="apply_listOf2_validValues" time="0.001"/>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.FunctionApplierOnFirstFromLastTest" name="apply_singletonList_sameList" time="0.002"/>
+  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.FunctionApplierOnFirstFromLastTest" name="apply_listOf3_validValues" time="0.001"/>
+  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.FunctionApplierOnFirstFromLastTest" name="apply_listOf2_validValues" time="0"/>
+  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.FunctionApplierOnFirstFromLastTest" name="apply_singletonList_sameList" time="0.003"/>
 </testsuite>

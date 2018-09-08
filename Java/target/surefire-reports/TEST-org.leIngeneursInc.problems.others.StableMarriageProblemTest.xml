@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="10" failures="0" name="org.leIngeneursInc.problems.others.subtractLastFromListProblem.ListUtilTest" time="0.004" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="org.leIngeneursInc.problems.others.StableMarriageProblemTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="10.0.2+13-Ubuntu-1ubuntu0.18.04.1"/>
@@ -62,14 +62,5 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.ListUtilTest" name="middleAndLast_listOfSize4_validValues" time="0.001"/>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.ListUtilTest" name="middleAndLast_nullList_null" time="0"/>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.ListUtilTest" name="middleAndLast_listOfSize3_validValues" time="0"/>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.ListUtilTest" name="reverse_null_null" time="0"/>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.ListUtilTest" name="reverse_twoNodes_reverseList" time="0"/>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.ListUtilTest" name="middleAndLast_longListOdd_validValues" time="0"/>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.ListUtilTest" name="middleAndLast_longListEven_validValues" time="0"/>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.ListUtilTest" name="reverse_significantSizedList_validCase" time="0"/>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.ListUtilTest" name="reverse_singleton_singleton" time="0.003"/>
-  <testcase classname="org.leIngeneursInc.problems.others.subtractLastFromListProblem.ListUtilTest" name="middleAndLast_singleton_singleton" time="0"/>
+  <testcase classname="org.leIngeneursInc.problems.others.StableMarriageProblemTest" name="randomCase" time="0"/>
 </testsuite>

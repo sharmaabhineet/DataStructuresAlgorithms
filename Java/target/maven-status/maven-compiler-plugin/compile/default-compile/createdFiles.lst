@@ -18,6 +18,7 @@ org/leIngeneursInc/problems/ctci/arraysStrings/BasicStringCompressor.class
 org/leIngeneursInc/dataStructuresAlgorithms/ctci/arraysAndStrings/RotateMatrixBy90.class
 org/leIngeneursInc/dataStructuresAlgorithms/sorting/Sort.class
 org/leIngeneursInc/problems/ctci/treesGraphs/BSTSequences.class
+org/leIngeneursInc/problems/others/StableMarriageProblem.class
 org/leIngeneursInc/dataStructuresAlgorithms/hashTables/OpenAddressingHashTable.class
 org/leIngeneursInc/problems/ctci/stacksQueues/QueueUsingStacks.class
 org/leIngeneursInc/problems/ctci/treesGraphs/ListOfDepths.class

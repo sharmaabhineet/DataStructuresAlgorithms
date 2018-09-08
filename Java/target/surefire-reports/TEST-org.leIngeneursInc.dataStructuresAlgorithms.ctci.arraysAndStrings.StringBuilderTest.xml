@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="11" failures="0" name="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" time="0.031" errors="0" skipped="0">
+<testsuite tests="11" failures="0" name="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" time="0.009" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="10.0.2+13-Ubuntu-1ubuntu0.18.04.1"/>
@@ -62,14 +62,14 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testAppendString" time="0.002"/>
-  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testInsertAtString" time="0.005"/>
+  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testAppendString" time="0"/>
+  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testInsertAtString" time="0.003"/>
   <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testSubStringStartEnd" time="0"/>
-  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testDeleteCharAt" time="0.003"/>
+  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testDeleteCharAt" time="0.002"/>
   <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testSubString" time="0"/>
-  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testStringConstructor" time="0.001"/>
-  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testDeleteSubstring" time="0.016"/>
-  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testInsertAt" time="0.004"/>
+  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testStringConstructor" time="0"/>
+  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testDeleteSubstring" time="0.004"/>
+  <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testInsertAt" time="0"/>
   <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testAppendChar" time="0"/>
   <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testLength" time="0"/>
   <testcase classname="org.leIngeneursInc.dataStructuresAlgorithms.ctci.arraysAndStrings.StringBuilderTest" name="testDefaultConstructor" time="0"/>
