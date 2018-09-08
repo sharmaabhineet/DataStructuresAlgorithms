@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.leIngeneursInc.dataStructuresAlgorithms.lists.UtilTest
+-------------------------------------------------------------------------------
+Tests run: 36, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.071 sec
